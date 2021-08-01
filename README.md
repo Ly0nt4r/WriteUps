@@ -11,3 +11,4 @@ Traeré y recopilaré WriteUps de las maquinas que consideré que son dignas de 
 Sin más.. espero que mis "resoluciones", sean lo más intuitivas posibles!
 
 
+![lulu](https://user-images.githubusercontent.com/87484792/127788210-308fcf83-5638-4a12-b5a4-312d2a1813f8.gif)
