@@ -1,5 +1,3 @@
-![ticket_valido](https://user-images.githubusercontent.com/87484792/127794253-3796e065-30e3-4768-babf-476bffb01457.png)
-![ticket_valido](https://user-images.githubusercontent.com/87484792/127794316-15642520-3be3-4fbc-bb8b-e63ffde5c943.png)
 # BOUNTYHUNTER 
 ![Bounty](https://user-images.githubusercontent.com/87484792/127788465-c99206d0-c1d8-491f-8e33-ea743e4c4165.png)
 </br>
