@@ -144,6 +144,8 @@ Ya tenemos acceso como usuario! por lo que podemos ver la flag de usuario:
 > Leemos aquí tambien una nota del que parece ser nuestro jefe John, diciendonos que tenemos que probar un programa y que por ello nos va a dar "permisos especiales". ¿Root? ¿Eres tú?
 </br>
 
+# Escalando a Root
+
 Vamos a comprobar entonces que permisos tenemos, para ello bastará con un simple ``sudo -l``
 
 ![sudo-l](https://user-images.githubusercontent.com/87484792/127793943-5534cf20-6632-47a6-8e60-b8b7659f12b8.png)
@@ -210,7 +212,7 @@ Vale.. ahora tenemos que entender la lógica del programa para saber que está h
 Después de un tiempo examinando el código saqué en claro, que para que nuestro ticket sea válido, necesitas de:
 ```
 1.- el archivo debe terminar con extensión ".md"
-2.- el ticket debe contener una cabecera compuesta por </br>
+2.- el ticket debe contener una cabecera compuesta por:
 
 # Skytrain Inc
 ## Ticket to
@@ -244,4 +246,6 @@ Ejecutamos y... Listo! Ya tenemos acceso a root, y con esto, la máquina complet
 ![root](https://user-images.githubusercontent.com/87484792/127794042-efe621d9-b890-4080-9268-8b7430f8046f.png)
 
 
+Si te ha servido de ayuda se agradece "respect" en mi perfil de hackthebox que podréis encontrar en mi perfil.
+ ***Gracias por leerlo y feliz hacking***
 
