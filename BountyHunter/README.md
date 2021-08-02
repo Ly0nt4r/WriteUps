@@ -82,6 +82,8 @@ Miré el codigo fuente a ver que hacia este especie de formulario, encontré un 
 
 Vaya por donde... estas haciendo uso de XML. Y vaya por donde... me puedo aprovechar de ello.
 
+# Explotación
+
 > Haremos uso de una vulnerabilidad conocida como XXE, donde inyectaremos codigo, en este caso una entidad que actuará de variable para guardar datos. </br>
 
 Para hacer este tipo de inyeccion, utilizaremos el codigo del formulario, modificando unicamente (de manera opcional, aunque recomendable) el tipo de encoding a **UTF-8**
@@ -117,6 +119,8 @@ La base de datos se encuentra en localhost, por lo que no tenemos alcance, ni si
 Pero las credenciales si que nos pueden servir. Recordamos que tenemos el servicio SSH abierto, podemos probar las credenciales a ver si entramos.
 
 >En este punto probé con 'test', 'bounty', 'root y un largo etc.. pero no parecía funcionar.
+
+# Accediendo al sistema
 
 Es aquí cuando debemos pensar como obtener el usuario. ¿Que archivo del sistema recoge información de los usuarios del sistema? Efectivamente ``/etc/passwd/``
 Y como podemos mirarlo? Pues volviendo a utilizar XXE. 
