@@ -51,7 +51,7 @@ En mi caso fue tal que así, pero podeis probar según veais necesario (como má
 > Como podeis comprobar, yo utilizé la libreria que viene por defecto en dirsearch y este fue el resultado:
 ![fuzz_1](https://user-images.githubusercontent.com/87484792/127791094-ad8c81b2-ccc2-4be6-92ac-cd8266ca610b.png)</br>
 
-¡Bien! en este caso hemos encontrado varios archivos php, entre ellos me llama la atención bd.php
+¡Bien! en este caso hemos encontrado varios archivos php, entre ellos me llama la atención db.php
 > Puede que aquí se oculten credenciales potenciales 
 </br>
 
