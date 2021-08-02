@@ -54,14 +54,18 @@ En mi caso fue tal que así, pero podeis probar según veais necesario (como má
 ¡Bien! en este caso hemos encontrado varios archivos php, entre ellos me llama la atención bd.php
 > Puede que aquí se oculten credenciales potenciales 
 </br>
+
 Si lo intentamos abrir vamos a ver que esta aparentemente vacio, no podemos visualizar si existe contenido dentro.
-Por lo que de momento vamos a pasar de él y vamos a observar que contiene los directorios "resources" y "assets"</br>
-> Este ultimo no contiene nada interesante ni que podamos visualizar 
- Nos centraremos en resources
-</br>
+Por lo que de momento vamos a pasar de él y vamos a observar que contiene los directorios "resources" y "assets" pero solo vamos a centrarnos en resources </br>
 
 Bien, vamos a disponernos a entrar en dicho directorio y a ver que encontramos:
 ![index_resources](https://user-images.githubusercontent.com/87484792/127791465-988c2be9-5d1d-4714-b8d8-37affb39f605.png)
 </br></br>
-¡Vaya!, parece que hay unos cuantos archivos aqui dentro.. me llama la atención ese Readme.txt
+¡Vaya!, parece que hay unos cuantos archivos aqui dentro.. me llama la atención ese README.txt, veamos que se esconde en su interior:
+
+![resources_readme](https://user-images.githubusercontent.com/87484792/127791991-f73a8823-071b-4d14-9848-9fbfc96209a4.png)
+> El propietario de este archivo nos comenta que hay una cuenta 'test' que aún no han deshabilitado, y que deben de enlaza su programa a la base de datos...
+</br>
+
+
 
