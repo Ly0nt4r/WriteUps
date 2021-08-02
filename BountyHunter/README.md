@@ -143,7 +143,7 @@ Ya tenemos acceso como usuario! por lo que podemos ver la flag de usuario:
 Vamos a comprobar entonces que permisos tenemos, para ello bastará con un simple ``sudo -l``
 
 ![sudo-l](https://user-images.githubusercontent.com/87484792/127793943-5534cf20-6632-47a6-8e60-b8b7659f12b8.png)
-> Vaya, al parece necesitamos debugear un archivo en python3 que valida tickets.
+> Vaya, al parece necesitamos debuguear un archivo en python3 que valida tickets.
 
 
 
