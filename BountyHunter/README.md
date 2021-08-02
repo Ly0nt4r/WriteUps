@@ -236,7 +236,7 @@ Como resultado nos da el 102, que %7 da 4. Perfecto.
 Y ahora? Sencillo. Concatenación.
 
 Creamos un ticket con todo lo que nos pide, y añadimos un AND para ejecutar otra sentencia.
-Esa sentencia será nuestro código malisioso. En este caso quedaría así:
+Esa sentencia será nuestro código malicioso. En este caso quedaría así:
 
 ![ticket_valido](https://user-images.githubusercontent.com/87484792/127794331-b7281ad3-953a-4343-bf5a-2feb0dacec7a.png)
 
