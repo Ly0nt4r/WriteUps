@@ -150,10 +150,98 @@ Vamos a comprobar entonces que permisos tenemos, para ello bastará con un simpl
 > Vaya, al parece necesitamos debuguear un archivo en python3 que valida tickets.
 
 
+El programa en cuestión es esté, basta con hacer un cat para verlo.
+```#Skytrain Inc Ticket Validation System 0.1
+#Do not distribute this file.
 
-EN PROCESO DE FINALIZAR
+def load_file(loc):
+    if loc.endswith(".md"):
+        return open(loc, 'r')
+    else:
+        print("Wrong file type.")
+        exit()
+
+def evaluate(ticketFile):
+    #Evaluates a ticket to check for ireggularities.
+    code_line = None
+    for i,x in enumerate(ticketFile.readlines()):
+        if i == 0:
+            if not x.startswith("# Skytrain Inc"):
+                return False
+            continue
+        if i == 1:
+            if not x.startswith("## Ticket to "):
+                return False
+            print(f"Destination: {' '.join(x.strip().split(' ')[3:])}")
+            continue
+
+        if x.startswith("__Ticket Code:__"):
+            code_line = i+1
+            continue
+
+        if code_line and i == code_line:
+            if not x.startswith("**"):
+                return False
+            ticketCode = x.replace("**", "").split("+")[0]
+            if int(ticketCode) % 7 == 4:
+                validationNumber = eval(x.replace("**", ""))
+                if validationNumber > 100:
+                    return True
+                else:
+                    return False
+    return False
+
+def main():
+    fileName = input("Please enter the path to the ticket file.\n")
+    ticket = load_file(fileName)
+    #DEBUG print(ticket)
+    result = evaluate(ticket)
+    if (result):
+        print("Valid ticket.")
+    else:
+        print("Invalid ticket.")
+    ticket.close
+
+main()
+```
+
+Vale.. ahora tenemos que entender la lógica del programa para saber que está haciendo
+
+Después de un tiempo examinando el código saqué en claro, que para que nuestro ticket sea válido, necesitas de:
+```
+1.- el archivo debe terminar con extensión ".md"
+2.- el ticket debe contener una cabecera compuesta por </br>
+
+# Skytrain Inc
+## Ticket to
+"__Ticket Code:__"
+
+3.- el ticket debe contener dos "*" al comienzo de su sintaxis
+4.- después del paso 3, debe contener un número mayor a 100 que su %7 sea = a 4
+5.- debe contener el símbolo "+" después del número, pues es un delimitador.
+```
+
+Bueno pues con esto tenemos que construir nuestro ticket.
+Todo parece sencillo, pero... </br>
+¿Como sacamos el número?,¿Como hacemos para ser root con el ticket?
+
+> Bien, para sacar el número podemos abrir python y a partir del 100, ir probando combinaciones.
+
+</br>
+
+Como resultado nos da el 102, que %7 da 4. Perfecto.
+
+Y ahora? Sencillo. Concatenación.
+
+Creamos un ticket con todo lo que nos pide, y añadimos un AND para ejecutar otra sentencia.
+Esa sentencia será nuestro código malisioso. En este caso quedaría así:
+
+![ticket_valido](https://user-images.githubusercontent.com/87484792/127794331-b7281ad3-953a-4343-bf5a-2feb0dacec7a.png)
+
+Ejecutamos y... Listo! Ya tenemos acceso a root, y con esto, la máquina completada.
+
 
 ![root](https://user-images.githubusercontent.com/87484792/127794042-efe621d9-b890-4080-9268-8b7430f8046f.png)
-AA
-![ticket_valido](https://user-images.githubusercontent.com/87484792/127794331-b7281ad3-953a-4343-bf5a-2feb0dacec7a.png)
+
+
 
