@@ -1,3 +1,5 @@
+![ticket_valido](https://user-images.githubusercontent.com/87484792/127794253-3796e065-30e3-4768-babf-476bffb01457.png)
+![ticket_valido](https://user-images.githubusercontent.com/87484792/127794316-15642520-3be3-4fbc-bb8b-e63ffde5c943.png)
 # BOUNTYHUNTER 
 ![Bounty](https://user-images.githubusercontent.com/87484792/127788465-c99206d0-c1d8-491f-8e33-ea743e4c4165.png)
 </br>
@@ -150,4 +152,6 @@ Vamos a comprobar entonces que permisos tenemos, para ello bastará con un simpl
 EN PROCESO DE FINALIZAR
 
 ![root](https://user-images.githubusercontent.com/87484792/127794042-efe621d9-b890-4080-9268-8b7430f8046f.png)
+AA
+![ticket_valido](https://user-images.githubusercontent.com/87484792/127794331-b7281ad3-953a-4343-bf5a-2feb0dacec7a.png)
 
