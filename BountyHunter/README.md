@@ -227,7 +227,7 @@ Bueno pues con esto tenemos que construir nuestro ticket.
 Todo parece sencillo, pero... </br>
 ¿Como sacamos el número?,¿Como hacemos para ser root con el ticket?
 
-> Bien, para sacar el número podemos abrir python y a partir del 100, ir probando combinaciones.
+> Bien, para sacar el número podemos utilizar python y a partir del 100, ir probando combinaciones.
 
 </br>
 
