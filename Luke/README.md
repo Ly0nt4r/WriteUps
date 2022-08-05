@@ -121,7 +121,7 @@ Obtenemos esto:
 
 `{"success":true,"message":"Authentication successful!","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjU5NzI5MTk5LCJleHAiOjE2NTk4MTU1OTl9.FkmkfrjYNhGhYk0pfkltl9YMHl-omAYZcDw1AxVOxDI"}`
 
-Tenemos un token JWT. Este token muy posiblemente sea el que nos pedian setear pasos atras.
+Tenemos un JWT. Este token muy posiblemente sea el que nos pedian setear pasos atras.
 Aqui igual que antes, tenemos que buscar el nombre del token. En este caso, **Authorization** es lo que esperaba recibir el servidor.
 Y con esto ya tendriamos construido el token que nos hacia falta al principio.
 
