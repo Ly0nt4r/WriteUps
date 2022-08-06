@@ -4,7 +4,7 @@
 
 ## Datos previos de Interés
 
-Siento que esta maquina ha sido bastante buena para tocar temas de autenticación. Aprenderemos a manejar un poco mejor curl para hacer peticiones para descubrir como esta formado el token de autorización que nos falta. En esta maquina no tendremos una escalada de privilegios como tal, pues accederos al sistema directamente como root desde una consola web, pero enseñaré una de las miles formas en las que podemos meternos con una shell interactiva al sistema. 
+Siento que esta maquina ha sido bastante buena para tocar temas de autenticación. Aprenderemos a manejar un poco mejor curl para hacer peticiones para descubrir como esta formado el token de autorización que nos falta. En esta maquina no tendremos una escalada de privilegios como tal, pues accederos al sistema directamente como root desde una consola web.
 
 ## Enumeración de puertos
 
@@ -175,5 +175,12 @@ Hay un apartado **terminal** donde tenemos acceso. Al parecer podemos ejecutar u
 ![985](https://user-images.githubusercontent.com/87484792/183251908-b2e452d2-e183-47a3-bb13-4f7234e51b6c.png)
 
 Con esto ya podriamos visualizar la flag de root, y encontrar la flag de user.
+Si quisieramos una shell interactiva desde nuestra maquina atacante, podriamos usar SSH.
+
+Con esto, estaría la maquina Luke.
+¡Feliz hacking!
+
+Fd: Lyont4r
+
 
 
