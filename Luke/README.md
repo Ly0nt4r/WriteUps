@@ -127,5 +127,53 @@ Y con esto ya tendriamos construido el token que nos hacia falta al principio.
 
 `Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjU5NzI5MTk5LCJleHAiOjE2NTk4MTU1OTl9.FkmkfrjYNhGhYk0pfkltl9YMHl-omAYZcDw1AxVOxDI`
 
+Al tramitarlo por cURL, recibimos el siguiente mensaje:
+![4](https://user-images.githubusercontent.com/87484792/183250765-dd47a592-eb21-433f-9ca9-96fa70f7efbe.png)
 
------ En Proceso ------
+Es un mensaje de bienvenida. 
+Esto nos dice que estamos por el camino correcto, pero no es lo que buscamos.
+Cuando fuzzeamos, encontramos una sección de **"/users"**. Probar con esta ruta puede ser interesante.
+
+![6](https://user-images.githubusercontent.com/87484792/183250880-7f89eac9-b692-4262-8747-e49212e6a670.png)
+
+Encontramos algo muy interesante, tenemos usuarios, entre ellos Derry.
+Probemos a mirar dentro de los usuarios, quizás esto nos reporte algo más interesante que su puesto.
+
+`for names in Admin Derry Yuri Dory; do curl -s http://10.10.10.137:3000/users/$names -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjU5NzA4NjAzLCJleHAiOjE2NTk3OTUwMDN9.GsRMp24vDUjN7bZN6Byv2dUPXqlTD475lnXbu2pbqjo"; echo ; done`
+
+Un bucle sencillo será suficiente para poder ver comodamente a los usuarios. 
+Esto es muy interesante, obtenemos contraseñas y tenemos muchos logins donde probar.
+![43](https://user-images.githubusercontent.com/87484792/183251242-bdd8f894-d51b-4e98-8435-2d37a5a93e45.png)
+
+Despues de estar probando un tiempo todas las credenciales, finalmente encuentro el login correcto.
+Probando en el */management* sin éxito, decido probar un subdirectorio del mismo. En este caso */management/configprops*, esto fue éxitoso.
+
+En este subdirectorio no hay nada, se encuentra vacio, por eso decido retroceder un poco y mirar en su directorio padre. Aqui si encuentro cosas.
+
+```
+    Parent Directory
+    config.json
+    config.php
+    login.php
+```
+
+Login.php y config.php me resultan familiares, sin embargo **config.json** es algo nuevo. 
+Mirando un poco la estructura de datos, podemos encontrar un password.
+
+
+![87](https://user-images.githubusercontent.com/87484792/183251660-4f9e72ec-0f09-442a-995b-bf578aa3a8f8.png)
+
+
+Es hora de probar por el puerto 8000. 
+Probé las credenciales `root:KpMasng6S5EtTy9Z` y efectivamente pude conectarme.
+
+![98](https://user-images.githubusercontent.com/87484792/183251810-6ccae486-6d30-452b-8569-ddabe0a02935.png)
+
+Normalmente suelo mirar primeramente las versiones, pero hay algo que me llamo la atención de primer vistazo.
+Hay un apartado **terminal** donde tenemos acceso. Al parecer podemos ejecutar una terminal como el usuario root.
+
+![985](https://user-images.githubusercontent.com/87484792/183251908-b2e452d2-e183-47a3-bb13-4f7234e51b6c.png)
+
+Con esto ya podriamos visualizar la flag de root, y encontrar la flag de user.
+
+
