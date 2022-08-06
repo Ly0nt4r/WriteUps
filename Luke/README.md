@@ -180,7 +180,7 @@ Si quisieramos una shell interactiva desde nuestra maquina atacante, podriamos u
 Con esto, estaría la maquina Luke.
 ¡Feliz hacking!
 
-Fd: Lyont4r
+Fd: Ly0nt4r
 
 
 
