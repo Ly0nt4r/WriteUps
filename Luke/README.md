@@ -4,7 +4,7 @@
 
 ## Datos previos de Interés
 
-Siento que esta maquina ha sido bastante buena para tocar temas de autenticación. Aprenderemos a manejar un poco mejor curl para hacer peticiones para descubrir como esta formado el token de autorización que nos falta. En esta maquina no tendremos una escalada de privilegios como tal, pues accederos al sistema directamente como root desde una consola web.
+Siento que esta maquina ha sido bastante buena para tocar temas de autenticación. Aprenderemos a manejar un poco mejor curl para hacer peticiones y así descubrir como esta formado el token de autorización que nos falta. En esta maquina no tendremos una escalada de privilegios como tal, pues accederemos al sistema directamente como root desde una consola web.
 
 ## Enumeración de puertos
 
