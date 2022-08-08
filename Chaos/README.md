@@ -212,5 +212,20 @@ Vemos que obtenemos la shell:
 ![image](https://user-images.githubusercontent.com/87484792/183456745-1598706a-424f-4089-9570-37c48c3ffcb9.png)
 
 
+Aplicaremos un tratamiento de la TTY, o observaré que usuarios estan a traves de `/etc/passwd`
 
+```
+root:x:0:0:root:/root:/bin/bash
+sahay:x:1000:1000:choas:/home/sahay:/bin/bash
+ayush:x:1001:1001:,,,:/home/ayush:/opt/rbash
+```
 
+Estos usuarios son familiares, sin embargo puedo observar que ayush tiene una restricted bash. Veremos como podemos eludirla. 
+Para convertirnos en ayush simplemente reutilizaremos la contraseña que encontramos pasos atras.
+
+`su ayush` # password: jiujitsu
+
+![image](https://user-images.githubusercontent.com/87484792/183461058-1c28ad60-0dc5-4320-a0b4-7b0df376d3ce.png)
+
+Solo podremos ejecutar binarios que pertenezcan dentro de una ruta del PATH. Para eso vamos a mirar nuestra ruta:
+echo $PATH: `/home/ayush/.app`
