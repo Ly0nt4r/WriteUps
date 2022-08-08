@@ -1,1 +1,112 @@
+# Chaos
+![chaoslogo](https://user-images.githubusercontent.com/87484792/183426922-b468a003-2088-4c41-981c-a5cbd503efc1.png)
+
+## Datos previos de Interés
+
+En esta maquina tocaremos mucha criptografia, es una maquina que siento que esta bastante equilibrada, tuve que investigar mucho para poder sacar algunos pasos y otros sin embargos se sacan por puro sentido común. Tendremos que buscar una contraseña para un post encriptado, ingresar a nuestro sistema de correo electronico para descargar un script de python y modificar un poco ese script para desencriptar el mensaje. Salir de un rbash y obtener credenciales desde archivos de firefox.
+
+## Enumeración de puertos
+
+Empezamos con una enumeración basica, buscaremos puertos abiertos en la maquina victima.
+
+` sudo nmap --min-rate 5000 --open -vvv -n -sS -Pn -p- -oG openPorts.txt 10.10.10.120`
+
+
+![1](https://user-images.githubusercontent.com/87484792/183431834-2b0b9f37-042e-4b9a-8312-9c851474d6a1.png)
+
+Esta maquina cuenta con varios puertos abiertos. Entre ellos, aloja dos paginas web, tanto en el puerto 80 como el 10000. Y servicio de mensajeria, tanto envio como recepción de mensajes. Iremos paso a paso, y empezaremos por el puerto 80.
+
+## Puerto 80
+
+![2](https://user-images.githubusercontent.com/87484792/183432856-94bdc105-a091-48ff-95d6-fa006bb9ef46.png)
+
+El puerto 80 muestra un mensaje, que como se puede ver en el codigo fuente, no está realmente controlando nada. Simplemente es un mensaje.
+Vamos a fuzzear un poco, pues con lo que tenemos hasta ahora no podemos hacer nada.
+
+El fuzzing muestra el siguiente resultado:
+
+![3](https://user-images.githubusercontent.com/87484792/183434838-257d807d-65e6-470a-99be-251cb7c9e23b.png)
+
+Podemos ver que tras esta pagina se esconde el CMS "WordPress" */wp*. Esto es un buen camino para seguir.
+Al ingresar simplemente encontramos un directorio en él. Se trata de */wordpress*, clickamos en él y nos lleva a este sitio:
+
+![4](https://user-images.githubusercontent.com/87484792/183436287-e25ba10f-0e7e-4dc6-8856-5153a0a1b2ce.png)
+
+Al parecer para poder visualizar el contenido, necesitamos de una contraseña. Por el momento no tenemos ningúna, así que dejaremos esto para más adelante.
+Partimos desde este directorio sin mucho más contenido. Antes de volver a hacer fuzzing, tengamos en cuenta que ahora mismo estamos tratando con Wordpress. Por lo que posiblemente encontremos un **wp-login.php** para poder ingresar en el CMS. Hagamos la prueba.
+
+![image](https://user-images.githubusercontent.com/87484792/183436883-78c3d35b-99b5-47d0-ba7f-d9f060ddd7bc.png)
+
+Efectivamente, encontramos un login. Sin embargo hasta el momento no hemos encontrado ninguna credencial.
+Algunas versiones de WP son conocidas por su *informatión Leakage*. Se me ocurre que podriamos hacer fuerza bruta para intentar ver que usuarios estan registrados.
+Para ello podemos utilizar multiples herramientas, en este caso usaré una especifica. *WPScan*.
+
+`wpscan --url http://10.10.10.120/wp/wordpress/  --enumerate u`
+
+![image](https://user-images.githubusercontent.com/87484792/183437604-79387d5f-b94d-478f-a80f-2382b6a9a9c7.png)
+
+Se ha identificado un usuario potencialmente válido. *Human*.
+
+Tras hacer fuerza bruta en el password, no consigo grandes resultados. Así que de momento solo tengo un usuario válido.
+Tras fuzzear bastante y mirar en distintos puertos no consigo encontrar nada. Así que se me ocurre probar este usuario como contraseña del post anterior.
+
+![image](https://user-images.githubusercontent.com/87484792/183438956-19042ced-1a81-4847-87a8-30a352bca83b.png)
+
+Efectivamente, es válido. Y gracías a esto obtenemos unas credenciales de una cuenta WebMail.
+
+## WebMail 
+
+En este paso ya tenemos unas credenciales para authenticarnos en un servidor webmail. Como los puertos de iPOP e iMAP estan abiertos, se me ocurre que pueda visualizar algún correo electronico interesante. 
+
+Hay muchas formas de acceder a esto, yo usaré *evolutión*. Un entorno gráfico que usé en otra maquina ("SneakyMailer")
+Es bastante sencillo e intuitivo de usar, nos ahorrará tiempo. 
+
+```
+Les aconsejo que si no saben configurarlo, miren este post de book.hacktrick donde explican como usarlo.
+https://book.hacktricks.xyz/network-services-pentesting/pentesting-imap#evolution
+```
+
+Una vez logueados. Podremos visualizar un mensaje de correo.
+
+![image](https://user-images.githubusercontent.com/87484792/183440298-e56ee746-7994-445c-ab97-fcc9367982d7.png)
+
+Datos interesantes que podemos sacar en claro de este mensaje son los siguientes:
+
+- Hay un archivo encriptado ("enim_msg.txt")
+- Hay un script en Python usado para encriptar ("en.py")
+- Sahay es la contraseña (?)
+
+Una vez descargado en nuestra maquina local, procedo a visualizar ambos archivos.
+El archivo encriptado no es legible (como era de esperar), y el script tiene la siguiente estructura:
+
+```
+def encrypt(key, filename):
+        chunksize = 64*1024
+        outputFile = "en" + filename
+        filesize = str(os.path.getsize(filename)).zfill(16)
+        IV =Random.new().read(16)
+
+        encryptor = AES.new(key, AES.MODE_CBC, IV)
+
+        with open(filename, 'rb') as infile:
+                with open(outputFile, 'wb') as outfile:
+                        outfile.write(filesize.encode('utf-8'))
+                        outfile.write(IV)
+
+        while True:
+                chunk = infile.read(chunksize)
+
+                if len(chunk) == 0:
+                        break
+                elif len(chunk) % 16 != 0:
+                        chunk += b' ' * (16 - (len(chunk) % 16))
+
+                outfile.write(encryptor.encrypt(chunk))
+
+def getKey(password):
+        hasher = SHA256.new(password.decode('utf-8'))
+        return hasher.digest()
+```
+
+
 
