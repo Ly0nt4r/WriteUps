@@ -108,5 +108,58 @@ def getKey(password):
         return hasher.digest()
 ```
 
+Esta parte se me complicó un poco, puesto que no soy un gran experto en criptografía. Fui desglosando poco a poco el script, pero sabia que tardaría mucho en hacer el proceso inverso. Aqui pensé que el autor de la maquina podría haber sacado este script de algún repositorio, y de ser así, quizas hubiera un decrypt. Copíe el código en Google, y efectivamente, encontré este link de Github:
+
+`https://github.com/vj0shii/File-Encryption-Script/blob/master/encrypt.py`
+
+El autor es "vJ0shii", y si miramos el repositorio, tiene tambien un decript. Esto me ahorró mucho tiempo y quizas muchos dolores de cabeza. 
+
+Decrypt:
+
+```
+import os, time
+from Crypto.Cipher import AES
+from Crypto.Hash import SHA256
+from Crypto import Random
+from optparse import *
+def decrypt(key, filename):
+	chunksize = 64 * 1024
+	outputFile = filename.split('en')[1]
+
+	with open(filename, 'rb') as infile:
+		filesize = int(infile.read(16))
+		IV = infile.read(16)
+		decryptor = AES.new(key, AES.MODE_CBC, IV)
+
+		with open(outputFile, 'wb') as outfile:
+			while True:
+				chunk = infile.read(chunksize)
+
+				if len(chunk) == 0:
+					break
+
+				outfile.write(decryptor.decrypt(chunk))
+			outfile.truncate(filesize)
+def getKey(password):
+            hasher = SHA256.new(password.encode('utf-8'))
+            return hasher.digest()
+filename = raw_input("Enter filename: ")
+password = raw_input("Enter password: ")
+key = getKey(password)
+decrypt(key,filename)
+
+```
+Podemos aprovechar ahora si, para hacer el proceso inverso y ver que dice el mensaje encriptado.
+
+*Dato de apoyo:*
+```
+Por si os da problemas a la hora de ejecutar con los módulos. Desistalen PyCrypt & Crypt, e instalen pycryptodome
+```
+
+Una vez pasado por el decrypt, y decodeado en **base64** obtenemos el siguiente mensaje:
+
+![image](https://user-images.githubusercontent.com/87484792/183443787-8eca67d1-7e84-4621-9358-4ed25a4b5c7a.png)
+
+
 
 
