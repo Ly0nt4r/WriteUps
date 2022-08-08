@@ -228,4 +228,28 @@ Para convertirnos en ayush simplemente reutilizaremos la contraseña que encontr
 ![image](https://user-images.githubusercontent.com/87484792/183461058-1c28ad60-0dc5-4320-a0b4-7b0df376d3ce.png)
 
 Solo podremos ejecutar binarios que pertenezcan dentro de una ruta del PATH. Para eso vamos a mirar nuestra ruta:
+
 echo $PATH: `/home/ayush/.app`
+El problema es que estamos bastante limitados, pero por suerte conocemos la contraseña de ayush y podemos jugar con ello.
+
+- El primer paso será salir de la shell de **ayush**, con exit bastará.
+- Volveremos a la shell de **www-data**
+- Haremos uso de los parametros de *su* para indicar que queremos ejecutar comandos sin una shell
+ `su -s /bin/bash -c "ls /home/ayush.app" ayush`
+
+Encontramos 3 binarios que podemos utilizar ("dir","ping","tar"). No sé si la intención del creador de la maquina es jugar con esos binarios para salir de la rbash.
+Pero hay una cosa que nos puede ayudar de mejor forma.
+
+- Ayush es el propietario de la ruta del path en la rbash
+- Tenemos permisos de escritura en /home/ayush
+
+Se me ocurre modificar el nombre de **.app** y con ello crear nuestro propio .app, alli podemos copiar binarios que nos interesen.
+Este paso nos lo podriamos ahorrar si tuvieramos permisos de escritura tambien en .app, pero no es el caso.
+Para ello ejecutaremos estos comandos:
+
+`su -s /bin/bash -c "mv ~/.app ~/.noname" ayush`
+`su -s /bin/bash -c "mkdir ~/.app" ayush`
+`su -s /bin/bash -c "cp /bin/bash ~/.app" ayush`
+
+Con esto podriamos ejecutar bash, y de aqui, modificar el path para tener acceso a todos los binarios de la maquina.
+Ahora sí, dentro de la maquina, haremos un reconocimiento, y obtendremos la *flag.txt*
