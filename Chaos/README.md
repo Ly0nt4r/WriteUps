@@ -272,3 +272,21 @@ Ejecutamos el script, ponemos la contraseña de ayush y ya tendremos la contrase
 ![image](https://user-images.githubusercontent.com/87484792/183466069-6a8b3770-6a69-4d69-8c11-f35398411ae5.png)
 
 ![image](https://user-images.githubusercontent.com/87484792/183466247-64f24d38-bc6a-4232-b505-2501c920bc54.png)
+
+## Camino no intencionado
+
+Cuando salió Chaos, esta vulnerabilidad no era conocida, por tanto no era intencionada que en un futuro se convirtiese en un camino rapido para conseguir root.
+Sin embargo, voy a mostrarlo para aquellos que quieran un camino rapido. No lo recomiendo, pues no aprenderan nada.
+
+En el puerto 10000 corre un WebAdmin, descubrí que era vulnerable a RCE sin necesidad de estar autenticado.
+
+![image](https://user-images.githubusercontent.com/87484792/183468187-b259e720-8bf2-42c1-a00a-5828840e8a5e.png)
+
+Para ello podemos tirar de herramientas ya automatizadas de github.
+
+![image](https://user-images.githubusercontent.com/87484792/183468652-364e8cde-a66b-48ff-a2f8-46a75c7defa2.png)
+
+
+Y listo, esto seria todo. Muchas gracias por leer mi write up. Se agradece Respect!
+¡Feliz hacking!
+F.d: Ly0nt4r  :)
