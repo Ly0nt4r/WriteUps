@@ -4,7 +4,6 @@
 
 En las navidades de 2020 descubrí el mundo de la ciberseguridad, más concretamente el pentesting. A comienzos de 2021 decidí adentrarme de lleno en el mundo de los CTF, y vencer a todas y cada unas de las maquinas que me pusieran por delante
 Es un camino duro, largo y de mucha exigencia. Pero cada día aprendo algo nuevo, distinto y apasionante. 
-Este es mi camino hacia el OSCP, mi "road to ¡GLORIA!", mi meta. 
 
 Puesto que la comunidad me ha aportado tanto, es hora de que yo empiece a aportar a la comunidad. 
 Traeré y recopilaré WriteUps de las maquinas de HackTheBox.
