@@ -38,4 +38,4 @@ Hay cosas interesantes en el reporte del fuzz.
 La misma web nos da la información que estamos contra un login de versión 19.04
 
 Esto es muy bueno ya que haciendo una busqueda simple en Google, vemos varios CVE y podemos ver que es vulnerable a **RCE**.
-Para poder ejecutar estos CVE necesitamos acceso a una cuenta administrador, pero puesto que no tenemos ninguno, intentaré bruteforcearlo.
+Para poder ejecutar estos CVE necesitamos acceso a una cuenta administrador, pero puesto que no tengo ninguno, intentaré bruteforcearlo.
