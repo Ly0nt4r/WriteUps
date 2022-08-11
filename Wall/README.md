@@ -105,7 +105,7 @@ Solo es necesario saber si la máquina cuenta con *GCC*, que en este caso, es af
 
 En db-exploit podemos encontrar los comandos que tenemos que ejecutar para escalar, tambien hay un script en bash que nos lo automatiza. Al ser solamente tirar comandos, podemos ejecutarlo directamente.
 
-El shell es este:
+El script es este:
 
 ```
 #!/bin/bash
@@ -152,3 +152,15 @@ screen -ls # screen itself is setuid, so...
 /tmp/rootshell
 
 ```
+
+Lo creamos o nos lo subimos a la maquina victima, le damos permiso de ejecución y lo ejecutamos.
+
+![image](https://user-images.githubusercontent.com/87484792/184166679-91f67456-0086-4d22-b59a-c1aadee3ac15.png)
+
+Ya tendriamos **root**, ya solo sería cuestión de ir a */home* y obtener la flag de user en */home/shelby*
+
+----------------------------------------------------------------------------------------------------------------------
+
+Y esto sería la maquina *Wall*, una máquina que creo que consiste mucho en la busqueda de versión vulnerable, e intentado hacerlo de forma manual para no simplemente ejecutar scripts y ya. Espero que os haya gustado.  ¡Feliz Hacking  ;) !
+
+F.d: Ly0nt4R
