@@ -52,3 +52,5 @@ Y efectivamente era la correcta.
 Tal como se puede mostrar en la imagen, nos ha dejado loguearnos.
 
 ![image](https://user-images.githubusercontent.com/87484792/184038497-785183bd-a2e8-4d03-b853-7d061616b1fb.png)
+
+Mirando los POC de los CVE, intenté hacerlo de forma manual. De forma grafica tendremos que acceder a **"Config > Commands > Discovery"**
