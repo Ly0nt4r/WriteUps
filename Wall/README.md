@@ -95,3 +95,7 @@ ejecutamos:
 
 
 ## Privilegios de Escalados - User & Root
+
+Nos encontramos como el usuario `www-data`, no nos encontramos en ningún grupo interesante, pero mirando los **SUID** hay algo que me llama directamente mi atención.
+
+
