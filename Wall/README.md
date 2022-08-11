@@ -101,7 +101,8 @@ Nos encontramos como el usuario `www-data`, no nos encontramos en ningún grupo 
 ![image](https://user-images.githubusercontent.com/87484792/184164799-31146bbd-5ca7-4004-a41c-705204c99667.png)
 
 **Screen 4.5.0** Es un binario que nos ayudará a escalar a Root.
-Solo es necesario saber si la máquina cuenta con *GCC*, que en este caso, es afirmativo.
+Solo es necesario saber si la máquina cuenta con *GCC*, que en este caso, es afirmativo. En caso de ser negativo, podriamos compilarlo desde nuestro lado.
+
 En db-exploit podemos encontrar los comandos que tenemos que ejecutar para escalar, tambien hay un script en bash que nos lo automatiza. Al ser solamente tirar comandos, podemos ejecutarlo directamente.
 
 El shell es este:
