@@ -34,3 +34,33 @@ En el */etc/hosts*:
 Con esto, podemos observar que se aplica un virtual hosting, y que la página nos muestra algo completamente distinto.
 
 ![image](https://user-images.githubusercontent.com/87484792/185161957-5e77ab62-642c-43a7-95f3-a9a8a3c4418e.png)
+
+Ahora que tenemos un dominio donde empezar a trabajar, investigaré un poco. La página parece algo simple, y puedo sacar en claro que hay un usuario "admin" pues es el autor de los post escritos en la web. Antes de hacer un fuzzeo de la web. Me fijo en el código fuente y observo que hay un CMS de wordpress alojado. Incluso hay un pluggin mostrado claramente. 
+
+![image](https://user-images.githubusercontent.com/87484792/185164703-64150116-6fdc-4795-a13e-6400f974c902.png)
+
+Da que pensar que esto pueda ser una pista intencionada para resolver la máquina. Investigaré un poco sobre este pluggins a ver si resulta vulnerble.
+
+![image](https://user-images.githubusercontent.com/87484792/185165469-c5140966-bf2f-4c8d-b89e-2b1eb9682afa.png)
+
+Efectivamente, este plugin es vulnerable. Nos otorga la capacidad de leer archivos tanto locales como remotos, puesto que se trata de un **RFI**.
+Puesto que tenemos un WordPress, y que podemos leer archivos, pienso rapidamente en buscar el archivo **wp-config.php**. En este archivo se encuentran credenciales en texto claro, entre otras cosas.
+
+La ejecución de esta vulnerabilidad es simple. 
+
+Código vulnerable:
+```
+if(isset($_GET['url'])){
+$content=file_get_contents($_GET['url']);
+```
+El archivo de configuración espera un parametro *URL*, si se le otorga, nos dará pie a obtener el contenido del fichero que le pasemos. 
+
+Pongamoslo en practica buscando el archivo anteriormente nombrado.
+
+`view-source:http://monitors.htb/wp-content/plugins/wp-with-spritz/wp.spritz.content.filter.php?url=../../../wp-config.php`
+
+![image](https://user-images.githubusercontent.com/87484792/185168892-f4b89563-e133-4f70-9091-ed4a1c34e538.png)
+
+
+
+
