@@ -39,9 +39,9 @@ Ahora que tenemos un dominio donde empezar a trabajar, investigaré un poco. La 
 
 ![image](https://user-images.githubusercontent.com/87484792/185164703-64150116-6fdc-4795-a13e-6400f974c902.png)
 
-Da que pensar que esto pueda ser una pista intencionada para resolver la máquina. Investigaré un poco sobre este pluggins a ver si resulta vulnerble.
+Da que pensar que esto pueda ser una pista intencionada para resolver la máquina. Investigaré un poco sobre este plugins a ver si resulta vulnerble.
 
-![image](https://user-images.githubusercontent.com/87484792/185165469-c5140966-bf2f-4c8d-b89e-2b1eb9682afa.png)
+![image](https://user-images.githubusercontent.com/87484792/185169741-d7afe6c1-f6fc-41c4-b76b-eee1a9008c4f.png)
 
 Efectivamente, este plugin es vulnerable. Nos otorga la capacidad de leer archivos tanto locales como remotos, puesto que se trata de un **RFI**.
 Puesto que tenemos un WordPress, y que podemos leer archivos, pienso rapidamente en buscar el archivo **wp-config.php**. En este archivo se encuentran credenciales en texto claro, entre otras cosas.
@@ -60,6 +60,14 @@ Pongamoslo en practica buscando el archivo anteriormente nombrado.
 `view-source:http://monitors.htb/wp-content/plugins/wp-with-spritz/wp.spritz.content.filter.php?url=../../../wp-config.php`
 
 ![image](https://user-images.githubusercontent.com/87484792/185168892-f4b89563-e133-4f70-9091-ed4a1c34e538.png)
+
+Tenemos un usuario y contraseña. `wpadmin:BestAdministrator@2020!`
+
+Por desgracia en el panel de sesión de Wordpress no resultó ser válidos. El usuario no se encontraba como válido, **admin** si era válido, pero esa contraseña no.
+En este punto tuve que investigar un poco más archivos que pudieran interesarme. Claves privadas, archivos de logs... nada parece funcionar.
+
+## Shell como www-data
+
 
 
 
