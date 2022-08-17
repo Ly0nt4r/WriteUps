@@ -106,7 +106,7 @@ Perfecto, las credenciales son válidas. Hora de ver como podemos vulnerarlo.
 
 ![image](https://user-images.githubusercontent.com/87484792/185173922-394362ab-b638-4725-98ae-ca01cfe0f42a.png)
 
-Siquiera pongo el nombre, y las primeras recomendaciones son exploits, esto pinta bien (*aunque no para admin de Cacti*).
+Siquiera pongo el nombre, y las primeras recomendaciones son exploits, esto pinta bien (*aunque no para el admin de Cacti*).
 La vulnerabilidad consiste en un SQLi, aprovecharé que ya tengo un exploit listo para usar, e intentaré sacar lo que pueda de aqui.
 Revisando el exploit, podemos inyectar comandos en la petición y como resultado obtener una shell. El exploit es bastante sencillo de usar:
 
@@ -125,7 +125,32 @@ Podemos buscar archivos con la ruta, para ver si alguno nos muestra el contenido
 
 Antes de probar nada, intenté ejecutar algún *id_rsa* o archivos similares. No tuve suerte.
 
-# 
+### Step 1:
+
+Buscaré de forma recursiva desde la raiz en algunos directorios donde se alojen ficheros de configuración. Este directorio es */etc*. Probaré a ver si encuentro algo.
+
+`grep -R "/home/marcus/.backup" /etc 2>/dev/null`
+
+![image](https://user-images.githubusercontent.com/87484792/185179355-5d37c980-9783-42cb-96f7-b0d3d9917d01.png)
+
+### Step 2 [No aconsejable]:
+
+Crearé un oneliner simple que automatice un *cat* con la ruta absoluta, buscando si algún archivo existe. Como desconozco cualquier tipo de dato relacionado con el archivo que estoy buscando, será un proceso lento. Probaré sin extensión y con extensiones comunes *.bak,.sh,.py,.txt,.conf*
+
+El oneliner quedaria así:
+
+`while read line; do cat /home/marcus/.backup/$line.sh 2>/dev/null; done < filesBruteForce`
+
+El archivo `filesBruteForce` es un `head -n 50000 rockyou.txt`. 50000 es un número random, puedes jugar con él, pero cuanto menos valor ponga, menos posibilidades de dar con el nombre correcto. 
+
+Despues de probar, finalmente se encontró. 
+
+![image](https://user-images.githubusercontent.com/87484792/185182064-51387100-8088-4254-aa45-632ab6df3847.png)
+
+Tenemos una contraseña, así que `su marcus` y ponemos la contraseña `VerticalEdge2020`
+
+
+
 
 
 
