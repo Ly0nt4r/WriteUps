@@ -4,7 +4,7 @@
 
 ## Datos de Interés
 
-Esta máquina la catalogaría de excelente. Son conceptos básicos lo que explotaremos, pero requieres tener buen ojo donde buscar. Empezaremos con una enumeración basica que tras investigar su puerto 80, nos dará como resultado un dominio existente. En este dominio encontraremos alojado un WordPress con un plugin vulnerable a RFI. Pasaremos a obtener unas credenciales validas de un subdominio nuevo. De donde sacaremos una shell como el usuario www-data debido a un SQLi y una ejecución de comandos de la misma.
+Esta máquina la catalogaría de excelente. Son conceptos básicos lo que explotaremos, pero requieres tener buen ojo donde buscar. Empezaremos con una enumeración basica que tras investigar su puerto 80, nos dará como resultado un dominio existente. En este dominio encontraremos alojado un WordPress con un plugin vulnerable a RFI. Pasaremos a obtener unas credenciales validas de un subdominio nuevo. De donde sacaremos una shell como el usuario www-data debido a un SQLi y una ejecución de comandos de la misma. Tras buscar en archivos de configuración, obtendremos la password de Marcus en su directorio *.backup*. Despues de realizar un LocalPortForwarding, explotaremos un servicio de login vulnerable a traves de una deserialización, para finalmente escapar de un contenedor gracias a una capability y una versión antigua de linux.
 
 
 ## Enumeración
@@ -195,18 +195,23 @@ Tras ejecutar el xploit, tenemos acceso al contenedor donde se aloja esta web.Po
 Aqui hay un post bastante bueno donde se explican formas de salir del contenedor teniendo esta capability activa.
 
 `https://blog.nody.cc/posts/container-breakouts-part2/` Recomiendo echarle un ojo, sin embargo en db-exploit o en google teneis bastantes más formas.
+La explotación consiste en aprovechar la ejecución del kernel, aunque estemos en un contenedor, se comparte ejecución con el kernel host. Por lo que aprovecharemos la ejecución para romper la barrera.
 
 ![image](https://user-images.githubusercontent.com/87484792/185188911-e4538445-64d1-4f09-a549-91e227bba1f0.png)
 
 Con los archivos ya montados, procedemos a ejecutarlos. 
 
-```
-(Si la ejecución os da fallo, sustituir los comandos de Makefile por su output original).
+`Si la ejecución os da fallo, sustituir los comandos de Makefile por su output original`
 ![image](https://user-images.githubusercontent.com/87484792/185189427-db209c37-3f74-4fd8-96e5-8f557a201dd3.png)
-```
+
+Una vez terminado la ejecución, tenemos la shell de root. 
+
+![image](https://user-images.githubusercontent.com/87484792/185190091-77befb80-8e8e-4e07-a4ba-632d9715df62.png)
 
 
+Esto ha sido la maquina "Monitors", a mi parecer una maquina bastante divertida. Espero que os haya gustado.
 
-
+¡Feliz hacking!
+F.d: Ly0nt4R :)
 
 
