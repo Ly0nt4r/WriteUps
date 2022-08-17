@@ -188,6 +188,25 @@ Podeis revisar y descargar el xploit desde mi propio Github:
 
 [![image](https://user-images.githubusercontent.com/87484792/184951495-a1a03e14-9e22-4433-bb7d-354e5b6c5a03.gif)
 
+Tras ejecutar el xploit, tenemos acceso al contenedor donde se aloja esta web.Podemos ver que tenemos una versión de linux que es vulnerable, y contamos con capabilities peligrosas.
+
+![image](https://user-images.githubusercontent.com/87484792/185187787-9a684337-441e-4aac-b6db-ba77ae977eda.png)
+
+Aqui hay un post bastante bueno donde se explican formas de salir del contenedor teniendo esta capability activa.
+
+`https://blog.nody.cc/posts/container-breakouts-part2/` Recomiendo echarle un ojo, sin embargo en db-exploit o en google teneis bastantes más formas.
+
+![image](https://user-images.githubusercontent.com/87484792/185188911-e4538445-64d1-4f09-a549-91e227bba1f0.png)
+
+Con los archivos ya montados, procedemos a ejecutarlos. 
+
+```
+(Si la ejecución os da fallo, sustituir los comandos de Makefile por su output original).
+![image](https://user-images.githubusercontent.com/87484792/185189427-db209c37-3f74-4fd8-96e5-8f557a201dd3.png)
+```
+
+
+
 
 
 
