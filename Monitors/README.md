@@ -186,7 +186,7 @@ Podeis revisar y descargar el xploit desde mi propio Github:
 
 `https://github.com/Ly0nt4r/CVE-2020-9496`  :)
 
-![image](https://user-images.githubusercontent.com/87484792/185186052-d405d051-2e49-484d-8183-230e01bf2934.png)
+[![image](https://user-images.githubusercontent.com/87484792/185186052-d405d051-2e49-484d-8183-230e01bf2934.png)](https://user-images.githubusercontent.com/87484792/184951495-a1a03e14-9e22-4433-bb7d-354e5b6c5a03.gif)
 
 
 
