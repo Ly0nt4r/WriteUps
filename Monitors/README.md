@@ -188,6 +188,8 @@ Podeis revisar y descargar el xploit desde mi propio Github:
 
 [![image](https://user-images.githubusercontent.com/87484792/184951495-a1a03e14-9e22-4433-bb7d-354e5b6c5a03.gif)
 
+## Root [Container] -> Root 
+
 Tras ejecutar el xploit, tenemos acceso al contenedor donde se aloja esta web.Podemos ver que tenemos una versión de linux que es vulnerable, y contamos con capabilities peligrosas.
 
 ![image](https://user-images.githubusercontent.com/87484792/185187787-9a684337-441e-4aac-b6db-ba77ae977eda.png)
