@@ -149,6 +149,23 @@ Despues de probar, finalmente se encontró.
 
 Tenemos una contraseña, así que `su marcus` y ponemos la contraseña `VerticalEdge2020`
 
+### Marcus -> Root [Container]
+
+Ya como Marcus podemos visualizar la flag `user.txt`. La maquina tiene contenedores desplegados, y en los puertos podemos observar que hay un puerto que solo tenemos acceso internamente.
+
+![image](https://user-images.githubusercontent.com/87484792/185183000-8da1ea49-75e4-44a1-b209-2154a075255b.png)
+
+El puerto **8443** solamente esta disponible de forma interna, tengo curiosidad por ver que se está cociendo allí. 
+Traeré este puerto a mi maquina con un Local Port Forwarding desde SSH con el usuario marcus.
+
+`ssh marcus@monitors.htb -L 8443:localhost:8443`
+
+![image](https://user-images.githubusercontent.com/87484792/185183602-852a40d5-67e3-45aa-b99c-6b61193e5311.png)
+
+No parece que haya nada, fuzzearé de forma local para ver si encuentro algo de utilidad.
+
+`dirsearch --url https://localhost:8443`
+
 
 
 
