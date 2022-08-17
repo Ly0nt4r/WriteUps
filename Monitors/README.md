@@ -10,6 +10,7 @@ Esta máquina la catalogaría de excelente. Son conceptos básicos lo que explot
 ## Enumeración
 
 Empezamos con una enumeración basica de puertos:
+
 `sudo nmap --min-rate 5000 -vvv -p- -sSCV --open -Pn -n -oN servicesPorts.txt 10.10.10.238`
 
 **NMAP** nos reporta dos puertos conocidos: "22 (SSH) & 80 (HTTP)"
