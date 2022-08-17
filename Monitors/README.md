@@ -68,7 +68,20 @@ En este punto tuve que investigar un poco más archivos que pudieran interesarme
 
 ## Shell como www-data
 
+En este punto tenemos un dominio, y una forma de leer archivos arbitrarios de la maquina victima. Se me ocurrió que podria leer:
 
+`/etc/apache2/sites-available/000-default.conf`
+
+En este archivo se encuentran dominios junto al puerto que lo hostea. Echaré un ojo para ver si hay algo interesante que pueda ayudarme.
+
+`view-source:http://monitors.htb/wp-content/plugins/wp-with-spritz/wp.spritz.content.filter.php?url=../../../../../../etc/apache2/sites-available/000-default.conf`
+
+De primeras me costó verlo, pero arriba del todo hay una parte comentada donde tenemos dos dominios. Aunque terminan en *.conf*, realmente parecen ser conocidos.
+El primero es el dominio que ya conocemos, el segundo tiene un subdominio extra.
+
+Agregamos este subdominio a nuestro */etc/hosts*:
+
+`cacti-admin.monitors.htb.conf`
 
 
 
