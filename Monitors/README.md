@@ -4,7 +4,7 @@
 
 ## Datos de Interés
 
-Esta máquina la catalogaría de excelente. Son conceptos básicos lo que explotaremos, pero requieres tener buen ojo donde buscar. # Completar
+Esta máquina la catalogaría de excelente. Son conceptos básicos lo que explotaremos, pero requieres tener buen ojo donde buscar. Empezaremos con una enumeración basica que tras investigar su puerto 80, nos dará como resultado un dominio existente. En este dominio encontraremos alojado un WordPress. 
 
 
 ## Enumeración
