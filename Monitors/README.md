@@ -63,8 +63,10 @@ Pongamoslo en practica buscando el archivo anteriormente nombrado.
 
 Tenemos un usuario y contraseña. `wpadmin:BestAdministrator@2020!`
 
+Tambien miré el */etc/passwd*, tenemos un usuario llamado **Marcus**.
+
 Por desgracia en el panel de sesión de Wordpress no resultó ser válidos. El usuario no se encontraba como válido, **admin** si era válido, pero esa contraseña no.
-En este punto tuve que investigar un poco más archivos que pudieran interesarme. Claves privadas, archivos de logs... nada parece funcionar.
+Probé inicio de sesión en SSH como marcus, pero tampoco resulto ser válido. En este punto tuve que investigar un poco más archivos que pudieran interesarme. Claves privadas, archivos de logs... nada parece funcionar.
 
 ## Shell como www-data
 
@@ -79,9 +81,35 @@ En este archivo se encuentran dominios junto al puerto que lo hostea. Echaré un
 De primeras me costó verlo, pero arriba del todo hay una parte comentada donde tenemos dos dominios. Aunque terminan en *.conf*, realmente parecen ser conocidos.
 El primero es el dominio que ya conocemos, el segundo tiene un subdominio extra.
 
+![image](https://user-images.githubusercontent.com/87484792/185172390-e2464e12-66f7-4e44-a88c-b037983fa943.png)
+
 Agregamos este subdominio a nuestro */etc/hosts*:
 
-`cacti-admin.monitors.htb.conf`
+`cacti-admin.monitors.htb`
+
+Veamos que nos encontramos en este subdominio.
+
+![image](https://user-images.githubusercontent.com/87484792/185172739-3c2da776-91b9-4899-95e2-e8b4ae1a40ab.png)
+
+Un panel de inicio de sesión, probaremos con las credenciales que habiamos obtenido previamente.
+
+Era la primera vez que conocia de la existencia de *Cacti*, decidí buscar en Google de que se trataba, tambien apunte la versión porque podria ser interesante.
+Esto es lo que dice Wikipedia:
+
+`Cacti es una completa solución para la generación de gráficos en red, diseñada para aprovechar el poder de almacenamiento y la funcionalidad para gráficas que poseen las aplicaciones RRDtool`
+
+Trataré de loguearme y luego buscaré alguna forma de obtener una shell.
+
+![image](https://user-images.githubusercontent.com/87484792/185173520-899031a1-60a3-411a-9bfd-9b2e7ce9b10d.png)
+
+Perfecto, las credenciales son válidas. Hora de ver como podemos vulnerarlo.
+
+![image](https://user-images.githubusercontent.com/87484792/185173922-394362ab-b638-4725-98ae-ca01cfe0f42a.png)
+
+Siquiera pongo el nombre, y las primeras recomendaciones son exploits, esto pinta bien (*aunque no para admin de Cacti*).
+La vulnerabilidad consiste en un SQLi, aprovecharé que ya tengo un exploit listo para usar, e intentaré sacar lo que pueda de aqui.
+
+
 
 
 
