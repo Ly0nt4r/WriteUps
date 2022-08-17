@@ -151,7 +151,7 @@ Tenemos una contraseña, así que `su marcus` y ponemos la contraseña `Vertical
 
 ### Marcus -> Root [Container]
 
-Ya como Marcus podemos visualizar la flag `user.txt`. La maquina tiene contenedores desplegados, y en los puertos podemos observar que hay un puerto que solo tenemos acceso internamente.
+Ya como Marcus podemos visualizar la flag `user.txt`. La maquina tiene contenedores desplegados, y en los puertos podemos observar que hay puertos que solo tenemos acceso internamente.
 
 ![image](https://user-images.githubusercontent.com/87484792/185183000-8da1ea49-75e4-44a1-b209-2154a075255b.png)
 
@@ -166,8 +166,27 @@ No parece que haya nada, fuzzearé de forma local para ver si encuentro algo de 
 
 `dirsearch --url https://localhost:8443`
 
+![image](https://user-images.githubusercontent.com/87484792/185184411-0885a41f-d92f-407c-bdca-befad472f00f.png)
 
+Encontramos algo de utilidad, ambas rutas nos redirigen al mismo sitio.
 
+![image](https://user-images.githubusercontent.com/87484792/185184724-a483b5b3-370c-4c17-aebf-29ef509c7431.png)
+
+Otro login, probé con la reutilización de credenciales, pero no parece gustarle.
+Abajo en la esquina se encuentra la versión de este panel de inicio.
+
+![image](https://user-images.githubusercontent.com/87484792/185184878-1646256a-d7b8-464f-953f-028c3a287333.png)
+
+Tras una busqueda en Google, descubro que es vulnerable a un ataque de deserialización.
+
+![image](https://user-images.githubusercontent.com/87484792/185185385-2ff39c9d-ad55-416d-b904-9b47350dca65.png)
+
+Existen muy pocos xploits disponibles, y tras revisar el POC, decido armar este exploit programado en Python3.
+Podeis revisar y descargar el xploit desde mi propio Github:
+
+`https://github.com/Ly0nt4r/CVE-2020-9496`  :)
+
+![image](https://user-images.githubusercontent.com/87484792/185186052-d405d051-2e49-484d-8183-230e01bf2934.png)
 
 
 
