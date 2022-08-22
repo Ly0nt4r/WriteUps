@@ -97,10 +97,22 @@ Con esto, ya tenemos un hash, probemos si es valido.
 
 ![image](https://user-images.githubusercontent.com/87484792/185997852-7fd0754e-7eb7-43c3-9f8d-931f9d9b5f28.png)
 
-Sí, **Pwned!**. Nos podemos conectar a la maquina victima a traves de winrm!
+Sí, **Pwn3d!**. Nos podemos conectar a la maquina victima a traves de winrm!
 
 ## svc_backup -> Administrator
 
+Lo primero que hago, y recomiendo hacer, es mirar los privilegios con los que cuenta el usuario en cuestión. En este caso contamos con dos privilegios que me llaman la atención, pero tratandose de una cuenta de **backup**, era de esperar.
+
+![image](https://user-images.githubusercontent.com/87484792/185999814-f0c31c61-8e19-4bee-a84e-c0bc547c2099.png)
+
+```
+SeBackupPrivilege             Back up files and directories  Enabled
+SeRestorePrivilege            Restore files and directories  Enabled
+```
+
+Estos dos privilegios nos permiten convertirnos en administrador a traves de una copia del sistema y un volcado. Para ello dejo esta pagina de apoyo, donde explican claramente (y que seguí) para la escalada de privilegios.
+
+`https://medium.com/r3d-buck3t/windows-privesc-with-sebackupprivilege-65d2cd1eb960`
 
 
 
