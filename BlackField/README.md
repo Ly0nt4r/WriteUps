@@ -116,4 +116,23 @@ Estos dos privilegios nos permiten convertirnos en administrador a traves de una
 
 Con todos los pasos seguidos, tendremos los dos archivos a punto para ser ejecutados.
 
+![image](https://user-images.githubusercontent.com/87484792/186001157-e4ca37bd-eac9-4cff-b50b-a73db2ae8525.png)
 
+En la web anterior tambien dan los pasos para extraer los hashes, pero igualmente solo es un comando. Despues de esto, tenemos a nuestra disposición el hash de Administrador, que tal y como pinta la cosa, será valido.
+
+![image](https://user-images.githubusercontent.com/87484792/186001603-b5a9ca87-311c-425d-aede-eb2de6b1f384.png)
+
+Efectivamente, **Pwn3d**.
+
+Ya con esto podriamos conectarnos por winrm y obtener las flags!
+
+![image](https://user-images.githubusercontent.com/87484792/186002034-7984145c-3532-4a6d-984d-38d244379473.png)
+
+
+-------------------------------------------------------------------------------------------
+
+Esto sería la maquina **BlackField**, espero que os haya gustado! 
+Se agradece respect en HTB  ^_^ 
+¡Feliz Hacking!
+
+Fd: Ly0nt4R
