@@ -38,4 +38,8 @@ Procedemos a crackearlo.
 
 ![image](https://user-images.githubusercontent.com/87484792/185954026-279755ca-274f-4ab7-a0ae-0dc3abf4053e.png)
 
-Despues de este paso, estuve buscando archivos de interés o contenidos sensibles en el recurso Smb.
+Despues de este paso, recopilaré información del AD, a través de bloodhound-python.
+
+`bloodhound-python -u Support -p '#00^BlackKnight' -ns 10.10.10.192 -d blackfield.local -c all`
+
+
