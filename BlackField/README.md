@@ -26,4 +26,5 @@ El primer paso será investigar que recursos compartidos tenemos a nivel de red.
 ![image](https://user-images.githubusercontent.com/87484792/185932051-41899009-64de-448c-8d24-fde4be501609.png)
 
 Encuentro dos recursos compartidos con capacidad de lectura. 
-Tras un vistazo rápido en ambos, encontramos una lista de usuarios (carpetas de usuarios) en **profiles$**
+Tras un vistazo rápido en ambos, encontramos una lista de usuarios (carpetas de usuarios) en **profiles$**.
+Me copiaré el output en un archivo y me quedaré solo con los nombres de usuarios para posteriormente poder trabajar con ellos.
