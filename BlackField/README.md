@@ -42,4 +42,16 @@ Despues de este paso, recopilaré información del AD, a través de bloodhound-p
 
 `bloodhound-python -u Support -p '#00^BlackKnight' -ns 10.10.10.192 -d blackfield.local -c all`
 
+Bloodhound es una herramienta que nos permitirá recolectar información, nos conectaremos a traves de neo4j. Para el volcado de información, usaré Bloodhound-python que es una buena alternativa compatible con linux.
+
+![image](https://user-images.githubusercontent.com/87484792/185989059-9c0e0fb7-b52a-478e-adf9-0e6ab0fc198a.png)
+
+Y el volcado sería este:
+
+![image](https://user-images.githubusercontent.com/87484792/185989568-a55a1a1e-dacc-4d45-9276-ab5e6cdf10a8.png)
+
+
+
+
+
 
