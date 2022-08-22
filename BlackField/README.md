@@ -116,5 +116,4 @@ Estos dos privilegios nos permiten convertirnos en administrador a traves de una
 
 Con todos los pasos seguidos, tendremos los dos archivos a punto para ser ejecutados.
 
-![image](https://user-images.githubusercontent.com/87484792/186000880-123a5e1d-fee5-4f69-8550-e61de52fc32a.png)
 
