@@ -41,6 +41,8 @@ Procedemos a crackearlo.
 
 ![image](https://user-images.githubusercontent.com/87484792/185954026-279755ca-274f-4ab7-a0ae-0dc3abf4053e.png)
 
+## Support -> Auditor2020
+
 Despues de este paso, recopilaré información del AD, a través de bloodhound-python.
 
 `bloodhound-python -u Support -p '#00^BlackKnight' -ns 10.10.10.192 -d blackfield.local -c all`
