@@ -71,5 +71,9 @@ Vemos que el usuario Support puede cambiar la contraseña de Audit2020. Esto es 
 
 En esta pagina podemos ver como cambiar la contraseña.
 
+Como el usuario Support entramos en RCPClient > `setuserinfo2 audit2020 23 admin123$`
 
+Y con esto ya tendremos cambiado la contraseña en el usuario audit2020.
+
+## Audit2020 -> svc_backup
 
