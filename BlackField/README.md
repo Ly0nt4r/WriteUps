@@ -75,5 +75,33 @@ Como el usuario Support entramos en RCPClient > `setuserinfo2 audit2020 23 admin
 
 Y con esto ya tendremos cambiado la contraseña en el usuario audit2020.
 
-## Audit2020 -> svc_backup
+## Audit2020 -> Svc_backup
+
+Una vez tenemos el usuario **Audit2020**, procedemos a revisar nuevamente el recurso smb. Esta vez tenemos un nuevo recurso con capacidad de lectura.Todo apunta que los tiros iran por aqui.
+
+![image](https://user-images.githubusercontent.com/87484792/185996425-c8cff322-db4b-4365-b8bd-fe46b3b95325.png)
+
+Dentro de este recurso, hay información bastante importante, sobre todo un volcado de memoria. Esto será util para intentar obtener Hashes.
+
+![image](https://user-images.githubusercontent.com/87484792/185996704-ce6b1ec3-fbc7-4f14-9a67-4a2ced83bbd4.png)
+
+Aqui hay cosas interesantes, el comprimido **lsass.zip** es algo a tener en cuenta. **lsass* es un proceso en los sistemas operativos Microsoft Windows, responsable de hacer cumplir la política de seguridad en el sistema. Verifica que los usuarios inicien sesión en un equipo o servidor Windows, gestiona los cambios de contraseñas y crea tokens de acceso. Aqui podrian existir tokens que nos permitan el acceso a otro usuario.
+
+Obtenemos un archivo *.DMP*, que como nos decian antes, se trata de un volcado de memoria. Aqui podriamos jugar con mimikatz para ver su contenido. Pero para no irme a la maquina virtual de Windows, utilizaré una herramienta alternativa, pypykatz.
+
+`pypykatz lsa minidump lsass.DMP`
+
+![image](https://user-images.githubusercontent.com/87484792/185997502-2cd38f40-31af-41e3-9acb-250b2dd926dc.png)
+
+Con esto, ya tenemos un hash, probemos si es valido.
+
+![image](https://user-images.githubusercontent.com/87484792/185997852-7fd0754e-7eb7-43c3-9f8d-931f9d9b5f28.png)
+
+Sí, **Pwned!**. Nos podemos conectar a la maquina victima a traves de winrm!
+
+## svc_backup -> Administrator
+
+
+
+
 
