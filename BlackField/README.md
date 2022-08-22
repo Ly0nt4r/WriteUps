@@ -37,3 +37,5 @@ Tras ello, ejecutaré un ataque *asreproast attack*
 Procedemos a crackearlo.
 
 ![image](https://user-images.githubusercontent.com/87484792/185954026-279755ca-274f-4ab7-a0ae-0dc3abf4053e.png)
+
+Despues de este paso, estuve buscando archivos de interés o contenidos sensibles en el recurso Smb.
