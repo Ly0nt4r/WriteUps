@@ -67,5 +67,9 @@ Ponemos credenciales > uploads data > seleccionar todos los json.
 
 Vemos que el usuario Support puede cambiar la contraseña de Audit2020. Esto es bastante bueno, aprovecharemos para hacerlo y poner la contraseña que queramos.
 
+`https://www.thehacker.recipes/ad/movement/dacl/forcechangepassword` 
+
+En esta pagina podemos ver como cambiar la contraseña.
+
 
 
