@@ -29,3 +29,7 @@ Encuentro dos recursos compartidos con capacidad de lectura.
 Tras un vistazo rápido en ambos, encontramos una lista de usuarios (carpetas de usuarios) en **profiles$**.
 Me copiaré el output en un archivo y me quedaré solo con los nombres de usuarios para posteriormente poder trabajar con ellos.
 Tras ello, ejecutaré un ataque *asreproast attack* 
+
+`python3 GetNPUsers.py -no-pass -usersfile users.txt BLACKFIELD.local/`
+
+![image](https://user-images.githubusercontent.com/87484792/185952673-a95ce938-5f82-4eaf-948a-5986ccbfd835.png)
