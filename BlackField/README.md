@@ -112,8 +112,9 @@ SeRestorePrivilege            Restore files and directories  Enabled
 
 Estos dos privilegios nos permiten convertirnos en administrador a traves de una copia del sistema y un volcado. Para ello dejo esta pagina de apoyo, donde explican claramente (y que seguí) para la escalada de privilegios.
 
-`https://medium.com/r3d-buck3t/windows-privesc-with-sebackupprivilege-65d2cd1eb960`
+`https://medium.com/r3d-buck3t/windows-privesc-with-sebackupprivilege-65d2cd1eb960` # En mi caso seguí el step (Method #1 — Disk shadow + Robocopy)
 
+Con todos los pasos seguidos, tendremos los dos archivos a punto para ser ejecutados.
 
-
+![image](https://user-images.githubusercontent.com/87484792/186000880-123a5e1d-fee5-4f69-8550-e61de52fc32a.png)
 
