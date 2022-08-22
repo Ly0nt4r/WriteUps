@@ -27,6 +27,9 @@ El primer paso será investigar que recursos compartidos tenemos a nivel de red.
 
 Encuentro dos recursos compartidos con capacidad de lectura. 
 Tras un vistazo rápido en ambos, encontramos una lista de usuarios (carpetas de usuarios) en **profiles$**.
+
+## Support
+
 Me copiaré el output en un archivo y me quedaré solo con los nombres de usuarios para posteriormente poder trabajar con ellos.
 Tras ello, ejecutaré un ataque *asreproast attack* 
 
