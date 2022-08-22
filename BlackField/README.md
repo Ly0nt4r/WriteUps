@@ -55,8 +55,17 @@ Y el volcado sería este:
 
 ![image](https://user-images.githubusercontent.com/87484792/185989568-a55a1a1e-dacc-4d45-9276-ab5e6cdf10a8.png)
 
+Necesitamos acceder a BloodHound para subir los Json, para ello primero abriremos neo4j `neo4j start` , y despues, `bloodhound`.
 
+Veremos algo como esto:
 
+![image](https://user-images.githubusercontent.com/87484792/185991118-dc3803b1-3883-42ad-b18a-aa66652d48a5.png)
+
+Ponemos credenciales > uploads data > seleccionar todos los json.
+
+![image](https://user-images.githubusercontent.com/87484792/185992980-11530267-4d1c-4d74-b605-4f53d74ad6b6.png)
+
+Vemos que el usuario Support puede cambiar la contraseña de Audit2020. Esto es bastante bueno, aprovecharemos para hacerlo y poner la contraseña que queramos.
 
 
 
