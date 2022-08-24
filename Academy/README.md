@@ -32,6 +32,14 @@ Hecho esto, veremos el contenido de la pagina.
 En ella encontramos unicamente un *Login* y un *Register* 
 Como no tengo ninguna credencial válida, iré a registrarme. Podriamos probar credenciales comunes pero ya adelanto que no servirá. 
 
+![image](https://user-images.githubusercontent.com/87484792/186457342-4fe2fca4-9bda-4422-aafd-3907ac18ec52.png)
+
 En el panel de Register me registro con `admin2:admin2`, parece funcional y tiene pinta de que puedo loguearme con estas credenciales.
 
-![image](https://user-images.githubusercontent.com/87484792/186457342-4fe2fca4-9bda-4422-aafd-3907ac18ec52.png)
+![image](https://user-images.githubusercontent.com/87484792/186491032-732cb7aa-c711-451b-a8f7-34bf7c8a578d.png)
+
+El panel de login me redirige a este home.php que emula a HackTheBox. Como podemos ver los links estan capados para no dirigir a ningún lado, así que por lo que parece esto es un rabbit hole, o al menos, no es un camino útil. Podemos fuzzear a ver si encontramos algo en el panel principal, todos los archivos parecen ser *.php* así que fuzearemos con esta extensión.
+
+
+
+
