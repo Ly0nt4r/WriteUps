@@ -57,6 +57,6 @@ La creación de la cuenta es exitosa, y al probarlo en el admin.php nos da como 
 
 ![image](https://user-images.githubusercontent.com/87484792/186493573-fa1110cb-2096-487b-9409-65cab9fe9274.png)
 
-Tenemos un subdominio nuevo que seria muy raro que pudiesemos encontrar en un diccionario común, así que agregemoslo al */etc/
+Tenemos un subdominio nuevo que seria muy raro que pudiesemos encontrar en un diccionario común, así que agregemoslo al */etc/hosts*
 
 
