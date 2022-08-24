@@ -40,6 +40,23 @@ En el panel de Register me registro con `admin2:admin2`, parece funcional y tien
 
 El panel de login me redirige a este home.php que emula a HackTheBox. Como podemos ver los links estan capados para no dirigir a ningún lado, así que por lo que parece esto es un rabbit hole, o al menos, no es un camino útil. Podemos fuzzear a ver si encontramos algo en el panel principal, todos los archivos parecen ser *.php* así que fuzearemos con esta extensión.
 
+![image](https://user-images.githubusercontent.com/87484792/186491864-25383487-fab4-4f74-8c53-b3e64ecde121.png)
 
+**admin.php** me llama muchisimo la atención. Echemos un ojo.
+
+![image](https://user-images.githubusercontent.com/87484792/186492096-a13675cf-7315-4111-b838-c6c1f2eb2074.png)
+
+Al parecer es otro login, pero como se puede ver en el titulo, es un login de cuentas administradores.
+Podiamos intentar buscar las credenciales, o bruteforcearlo, pero antes de todo.. echemos un ojo al comportamiento de la web cuando registramos una cuenta nueva.
+Utilizaremos BurpSuite para enviar las request a traves de un proxy, en él, visualizaremos la data que enviamos.
+
+![image](https://user-images.githubusercontent.com/87484792/186492718-7f9b21c1-ac7c-4293-9c42-81e046afe846.png)
+
+**roleid** parece ser un controlador que asigna a la cuenta un "Rol". El valor inicial es un 0, pero... ¿que pasa si lo cambiamos de valor? en este caso un 1.
+La creación de la cuenta es exitosa, y al probarlo en el admin.php nos da como resultado el poder adentrarnos en una "lista/tabla de tareas"
+
+![image](https://user-images.githubusercontent.com/87484792/186493573-fa1110cb-2096-487b-9409-65cab9fe9274.png)
+
+Tenemos un subdominio nuevo que seria muy raro que pudiesemos encontrar en un diccionario común, así que agregemoslo al */etc/
 
 
