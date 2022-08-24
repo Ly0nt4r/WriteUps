@@ -28,3 +28,10 @@ Como vemos en la enumeración, el puerto 80 nos redigirá a un dominio virtualiz
 Hecho esto, veremos el contenido de la pagina. 
 
 ![image](https://user-images.githubusercontent.com/87484792/186438999-9624a08f-2a11-45b1-9f2a-9b28f9f506df.png)
+
+En ella encontramos unicamente un *Login* y un *Register* 
+Como no tengo ninguna credencial válida, iré a registrarme. Podriamos probar credenciales comunes pero ya adelanto que no servirá. 
+
+En el panel de Register me registro con `admin2:admin2`, parece funcional y tiene pinta de que puedo loguearme con estas credenciales.
+
+![image](https://user-images.githubusercontent.com/87484792/186457342-4fe2fca4-9bda-4422-aafd-3907ac18ec52.png)
