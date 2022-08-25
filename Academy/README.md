@@ -59,4 +59,8 @@ La creación de la cuenta es exitosa, y al probarlo en el admin.php nos da como 
 
 Tenemos un subdominio nuevo que seria muy raro que pudiesemos encontrar en un diccionario común, así que agregemoslo al */etc/hosts*
 
+Tras ingresar en él, podemos ver que estamos antes Laravel, linkeos de rutas absolutas y algo muy interesante. **APP_KEY** se nos muestra en los archivos de configuración. En Laravel Framework hasta 5.5.40 y 5.6.x hasta 5.6.29, la ejecución remota de código puede ocurrir como resultado de una llamada de deserialización en un valor X-XSRF-TOKEN potencialmente no confiable, se presenta como CVE-2018-15133 y hay exploits disponibles.
+
+![image](https://user-images.githubusercontent.com/87484792/186663935-bf62f34b-8f0a-426a-a872-970a791bb7a5.png)
+
 
