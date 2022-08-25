@@ -72,4 +72,21 @@ Utilizaré algún exploit de Github, no parece muy dificil de utilizar. Tras lee
 
 ![image](https://user-images.githubusercontent.com/87484792/186666733-7efeb5d1-f52c-4831-b112-899bcc52f3bd.png)
 
+Me mandaré una shell a netcat, haré un tratamiento de la TTY y empezaré a investigar un poco.
+
+## www-data ->  cry0l1t3
+
+Tras lo anterior quedó mejor para trabajar, ahora toca investigar.
+
+![image](https://user-images.githubusercontent.com/87484792/186668090-275d3543-a31c-4c17-8fef-0120878905e5.png)
+
+En la pagina de Laravel veiamos que habia ciertas variables de configuración, estas variables se pueden encontrar en **.env**, donde aparecian usuarios y una contraseña "secreta". Este archivo pertenecia al subdominio encontrado, pero ¿Que pasa si lo buscamos en el academy? 
+
+![image](https://user-images.githubusercontent.com/87484792/186669255-fee56be3-9adf-4258-b7f6-38dd305ea2a5.png)
+
+Encontramos una contraseña, probemos a ver a que usuario pertenece.
+
+
+
+El usuario es cry0l1t3, procedemos a tratar la TTY.
 
