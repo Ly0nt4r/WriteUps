@@ -80,7 +80,7 @@ Tras lo anterior quedó mejor para trabajar, ahora toca investigar.
 
 En la HOME del user, podemos encontrar la flag.
 
-
+![image](https://user-images.githubusercontent.com/87484792/186687015-c127ca66-250c-473c-99ac-e4bbe5b26e9c.png)
 
 En la pagina de Laravel veiamos que habia ciertas variables de configuración, estas variables se pueden encontrar en **.env**, donde aparecian usuarios y una contraseña "secreta". Este archivo pertenecia al subdominio encontrado, pero ¿Que pasa si lo buscamos en el academy? 
 
