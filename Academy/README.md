@@ -38,7 +38,6 @@ En el panel de Register me registro con `admin2:admin2`, parece funcional y tien
 
 ![image](https://user-images.githubusercontent.com/87484792/186491032-732cb7aa-c711-451b-a8f7-34bf7c8a578d.png)
 
-## Shell www-data
 
 El panel de login me redirige a este home.php que emula a HackTheBox. Como podemos ver los links estan capados para no dirigir a ningún lado, así que por lo que parece esto es un rabbit hole, o al menos, no es un camino útil. Podemos fuzzear a ver si encontramos algo en el panel principal, todos los archivos parecen ser *.php* así que fuzearemos con esta extensión.
 
@@ -47,6 +46,8 @@ El panel de login me redirige a este home.php que emula a HackTheBox. Como podem
 **admin.php** me llama muchisimo la atención. Echemos un ojo.
 
 ![image](https://user-images.githubusercontent.com/87484792/186492096-a13675cf-7315-4111-b838-c6c1f2eb2074.png)
+
+## Shell www-data
 
 Al parecer es otro login, pero como se puede ver en el titulo, es un login de cuentas administradores.
 Podiamos intentar buscar las credenciales, o bruteforcearlo, pero antes de todo.. echemos un ojo al comportamiento de la web cuando registramos una cuenta nueva.
@@ -64,5 +65,11 @@ Tenemos un subdominio nuevo que seria muy raro que pudiesemos encontrar en un di
 Tras ingresar en él, podemos ver que estamos antes Laravel, linkeos de rutas absolutas y algo muy interesante. **APP_KEY** se nos muestra en los archivos de configuración. En Laravel Framework hasta 5.5.40 y 5.6.x hasta 5.6.29, la ejecución remota de código puede ocurrir como resultado de una llamada de deserialización en un valor X-XSRF-TOKEN potencialmente no confiable, se presenta como CVE-2018-15133 y hay exploits disponibles.
 
 ![image](https://user-images.githubusercontent.com/87484792/186663935-bf62f34b-8f0a-426a-a872-970a791bb7a5.png)
+
+Utilizaré algún exploit de Github, no parece muy dificil de utilizar. Tras leer un poco el exploit podemos poner un modo `--interactive` para otorgar una shell en vez de ejecutar un comando especifico. El comando quedaria así:
+
+`python3 pwn_laravel.py http://dev-staging-01.academy.htb/ "dBLUaMuZz7Iq06XtL/Xnz/90Ejq+DEEynggqubHWFj0=" --interactive`
+
+![image](https://user-images.githubusercontent.com/87484792/186666733-7efeb5d1-f52c-4831-b112-899bcc52f3bd.png)
 
 
