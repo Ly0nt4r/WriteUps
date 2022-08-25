@@ -120,9 +120,17 @@ El siguiente paso que suelo hacer es verificar si tenemos algún permiso de SUDO
 
 ![image](https://user-images.githubusercontent.com/87484792/186684026-334868e9-daa6-47f3-aeb5-16aa3e768d57.png)
 
+Tenemos la posibilidad de ejecutar como cualquier usuario *sudo* el binario composer.
 
+```
+Composer es un sistema de gestión de paquetes para programar en PHP el cual provee los formatos estándar necesarios para manejar dependencias y librerías de PHP
+```
 
-![image](https://user-images.githubusercontent.com/87484792/186680732-3b39799a-d9e9-421c-8619-2ee9f97526d5.png)
+Hay una pagina llamada **GTFOBins** donde podemos ver si el binario es vulnerable, y como explotarlo, para conseguir una escalada de privilegios.
+En este caso es vulnerable, podemos escalar por SUDO, así que seguiremos los pasos.
+
+![image](https://user-images.githubusercontent.com/87484792/186684937-86a89b38-87df-446b-9b17-1f1ffbf1e650.png)
+
 
 
 
