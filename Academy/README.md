@@ -78,6 +78,10 @@ Me mandaré una shell a netcat, haré un tratamiento de la TTY y empezaré a inv
 
 Tras lo anterior quedó mejor para trabajar, ahora toca investigar.
 
+En la HOME del user, podemos encontrar la flag.
+
+
+
 En la pagina de Laravel veiamos que habia ciertas variables de configuración, estas variables se pueden encontrar en **.env**, donde aparecian usuarios y una contraseña "secreta". Este archivo pertenecia al subdominio encontrado, pero ¿Que pasa si lo buscamos en el academy? 
 
 ![image](https://user-images.githubusercontent.com/87484792/186669255-fee56be3-9adf-4258-b7f6-38dd305ea2a5.png)
@@ -131,7 +135,19 @@ En este caso es vulnerable, podemos escalar por SUDO, así que seguiremos los pa
 
 ![image](https://user-images.githubusercontent.com/87484792/186684937-86a89b38-87df-446b-9b17-1f1ffbf1e650.png)
 
+Una vez ejecutado:
 
+![image](https://user-images.githubusercontent.com/87484792/186685900-651947be-8f62-4fdc-a0e5-7b3b5353e4ca.png)
+
+Listo! ya tendriamos acceso como root y podriamos visualizar la flag de root
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Muchas gracias por visualizar mi write up, se agradece respect en HTB :)
+
+¡Happy Hacking! ^_^
+
+Fd: Ly0nt4r
 
 
 
