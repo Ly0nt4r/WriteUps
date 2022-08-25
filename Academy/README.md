@@ -38,6 +38,8 @@ En el panel de Register me registro con `admin2:admin2`, parece funcional y tien
 
 ![image](https://user-images.githubusercontent.com/87484792/186491032-732cb7aa-c711-451b-a8f7-34bf7c8a578d.png)
 
+## Shell www-data
+
 El panel de login me redirige a este home.php que emula a HackTheBox. Como podemos ver los links estan capados para no dirigir a ningún lado, así que por lo que parece esto es un rabbit hole, o al menos, no es un camino útil. Podemos fuzzear a ver si encontramos algo en el panel principal, todos los archivos parecen ser *.php* así que fuzearemos con esta extensión.
 
 ![image](https://user-images.githubusercontent.com/87484792/186491864-25383487-fab4-4f74-8c53-b3e64ecde121.png)
