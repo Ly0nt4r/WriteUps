@@ -77,10 +77,6 @@ Me mandaré una shell a netcat, haré un tratamiento de la TTY y empezaré a inv
 
 Tras lo anterior quedó mejor para trabajar, ahora toca investigar.
 
-En la HOME del user, podemos encontrar la flag.
-
-![image](https://user-images.githubusercontent.com/87484792/186687015-c127ca66-250c-473c-99ac-e4bbe5b26e9c.png)
-
 En la pagina de Laravel veiamos que habia ciertas variables de configuración, estas variables se pueden encontrar en **.env**, donde aparecian usuarios y una contraseña "secreta". Este archivo pertenecia al subdominio encontrado, pero ¿Que pasa si lo buscamos en el academy? 
 
 ![image](https://user-images.githubusercontent.com/87484792/186669255-fee56be3-9adf-4258-b7f6-38dd305ea2a5.png)
@@ -92,6 +88,10 @@ Encontramos una contraseña, probemos a ver a que usuario pertenece.
 El usuario es cry0l1t3, me conectaré por SSH. 
 
 ## cry0l1t3 -> Mrb3n
+
+En la HOME del user, podemos encontrar la flag.
+
+![image](https://user-images.githubusercontent.com/87484792/186687015-c127ca66-250c-473c-99ac-e4bbe5b26e9c.png)
 
 Lo que normalmente suelo hacer una vez entro como un usuario, es visualizar a que grupos pertenezco. Esto nos da información sobre los privilegios que tenemos sobre el sistema 
 
