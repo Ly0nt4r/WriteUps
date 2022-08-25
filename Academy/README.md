@@ -90,5 +90,7 @@ El usuario es cry0l1t3, me conectaré por SSH.
 
 ## cry0l1t3 -> Mrb3n
 
+Lo que normalmente suelo hacer una vez entro como un usuario, es visualizar a que grupos pertenezco. Esto nos da información sobre que privilegios sobre el sistema 
 
+![image](https://user-images.githubusercontent.com/87484792/186673917-ae0c889b-0bae-4a81-ad26-c5ef44347ca9.png)
 
