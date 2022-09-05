@@ -10,4 +10,4 @@ Empezamos con una enumeración basica de la maquina victima. En este caso tendre
 
 ![image](https://user-images.githubusercontent.com/87484792/188515254-0e6b1ea0-20c0-4f71-a49b-873c3f7ce277.png)
 
-
+En este caso tendremos **SSH** y **HTTP** por el puerto *8080*
