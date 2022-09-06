@@ -184,4 +184,34 @@ La key parece ser "alexandrovich". Usemosla para ver la contraseña.
 
 ![image](https://user-images.githubusercontent.com/87484792/188675111-a3658c49-0c9a-439f-ae98-5be66726106b.png)
 
-Efectivamente, encontramos la contraseña **
+Efectivamente, encontramos la contraseña **SecThruObsFTW** y estamos dentro.
+
+## Robert -> Root
+
+Ya como robert, podemos investigar un poco y obtener la flag de user.txt
+
+![image](https://user-images.githubusercontent.com/87484792/188675436-11480a2b-7136-421a-80ea-109abdf77352.png)
+
+Tenemos un permiso SUDO, nos permite ejecutar un archivo python bajo el usuario que queramos sin proporcionar contraseña.
+
+`Existen multiples formas de realizar esta escalada de privilegios, para mi, esta fue la más rapida.`
+
+![image](https://user-images.githubusercontent.com/87484792/188675877-32ea72b2-1c56-4720-bfdc-b3adb4c21bda.png)
+
+Si observamos bien, el directorio donde se aloja el archivo de python, es propiedad de root. Sin embargo, el directorio padre, pertenece a Robert. Podemos hacer un cambio de nombres, para secuestrar el archivo python.
+
+- Primero cambiaremos el nombre de la carpeta donde se aloja el archivo de python el cual tenemos permisos de SUDO.
+- Crearemos una carpeta con el mismo nombre del cual sobreescribimos antes.
+- Crearemos un archivo de python con el mismo nombre el cual tenemos acceso, y pondremos un achivo de python malicioso.
+- Ejecutaremos el permiso SUDO como root, otorgando privilegios *+s* a *bash*
+
+
+![image](https://user-images.githubusercontent.com/87484792/188678093-e9fb4537-373c-40fd-84a9-939d20425c72.png)
+
+
+Y con esto, ya seriamos **root** con esto ya podriamos visualizar la flag de *root.txt*.
+
+--------------------------------------------------------------------------------------------
+
+Esta ha sido la maquina Obscurity, espero que os haya gustado y se agradece un respect en Htb :)
+¡Hasta otra!
