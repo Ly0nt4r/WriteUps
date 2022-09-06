@@ -28,4 +28,7 @@ Como se puede ver, hemos encontrado la ruta "oculta" a raiz de un archivo que se
 
 ![image](https://user-images.githubusercontent.com/87484792/188662942-21933a0a-99f0-4cc9-b79d-d6bcdf585305.png)
 
+Me lo bajaré y lo inspeccionaré en mi maquina atacante. Este archivo según nos cuentan, esta en producción. Quiere decir que todo lo que podamos encontrar en el código fuente, nos servirá para atacar a la pagina web.
+
+
 
