@@ -23,3 +23,9 @@ Bajando un poco más, podemos encontrar un mensaje para developers. Esto puede s
 No conocemos la ruta, pero si el archivo. Podriamos tratar de fuzzear para ver que directorio nos devuelve un 200.
 
 ![image](https://user-images.githubusercontent.com/87484792/188658574-fb9df87c-0fce-49d8-85cd-d7dec097aa8c.png)
+
+Como se puede ver, hemos encontrado la ruta "oculta" a raiz de un archivo que se encontraba dentro. Si accedemos a la ruta, podemos ver el codigo fuente.
+
+![image](https://user-images.githubusercontent.com/87484792/188662942-21933a0a-99f0-4cc9-b79d-d6bcdf585305.png)
+
+
