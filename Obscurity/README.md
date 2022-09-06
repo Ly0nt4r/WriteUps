@@ -12,5 +12,14 @@ Empezamos con una enumeración basica de la maquina victima. En este caso tendre
 
 En este caso tendremos **SSH** y **HTTP** por el puerto *8080*
 
+Encontramos una pagina web simple.
+
 ![image](https://user-images.githubusercontent.com/87484792/188631527-51987c76-88ab-476b-91e0-35c27a63db59.png)
 
+Bajando un poco más, podemos encontrar un mensaje para developers. Esto puede ser crucial. Nos dice que hay un directorio oculto donde se encuentra un archivo de python.
+
+![image](https://user-images.githubusercontent.com/87484792/188658448-98f4e9ad-17fc-4813-ad9c-06047288dcae.png)
+
+No conocemos la ruta, pero si el archivo. Podriamos tratar de fuzzear para ver que directorio nos devuelve un 200.
+
+![image](https://user-images.githubusercontent.com/87484792/188658574-fb9df87c-0fce-49d8-85cd-d7dec097aa8c.png)
