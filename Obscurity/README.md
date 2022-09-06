@@ -12,4 +12,5 @@ Empezamos con una enumeración basica de la maquina victima. En este caso tendre
 
 En este caso tendremos **SSH** y **HTTP** por el puerto *8080*
 
-**En proceso** 
+![image](https://user-images.githubusercontent.com/87484792/188631527-51987c76-88ab-476b-91e0-35c27a63db59.png)
+
