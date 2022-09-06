@@ -69,5 +69,119 @@ Estamos dentro!
 
 ## www-data -> robert
 
+En el directorio home de **robert** podemos encontrar unos archivos muy curiosos.
 
+![image](https://user-images.githubusercontent.com/87484792/188672399-1b61d2ae-5131-45f2-aa01-fd7ae7d3918c.png)
 
+Al parecer robert esta jugando con temas de encriptados, y para obtener su contraseña, debemos hacer el proceso inverso, desencriptar los datos.
+Traeré todos los archivos a mi maquina atacante y veré como puedo jugar con ello.
+
+**SuperSecuryCryp.py**, se encarga de encrypt-decrypt los datos/archivos.
+
+```
+import sys
+import argparse
+
+def encrypt(text, key):
+    keylen = len(key)
+    keyPos = 0
+    encrypted = ""
+    for x in text:
+        keyChr = key[keyPos]
+        newChr = ord(x)
+        newChr = chr((newChr + ord(keyChr)) % 255)
+        encrypted += newChr
+        keyPos += 1
+        keyPos = keyPos % keylen
+    return encrypted
+
+def decrypt(text, key):
+    keylen = len(key)
+    keyPos = 0
+    decrypted = ""
+    for x in text:
+        keyChr = key[keyPos]
+        newChr = ord(x)
+        newChr = chr((newChr - ord(keyChr)) % 255)
+        decrypted += newChr
+        keyPos += 1
+        keyPos = keyPos % keylen
+    return decrypted
+
+parser = argparse.ArgumentParser(description='Encrypt with 0bscura\'s encryption algorithm')
+
+parser.add_argument('-i',
+                    metavar='InFile',
+                    type=str,
+                    help='The file to read',
+                    required=False)
+
+parser.add_argument('-o',
+                    metavar='OutFile',
+                    type=str,
+                    help='Where to output the encrypted/decrypted file',
+                    required=False)
+
+parser.add_argument('-k',
+                    metavar='Key',
+                    type=str,
+                    help='Key to use',
+                    required=False)
+
+parser.add_argument('-d', action='store_true', help='Decrypt mode')
+
+args = parser.parse_args()
+
+banner = "################################\n"
+banner+= "#           BEGINNING          #\n"
+banner+= "#    SUPER SECURE ENCRYPTOR    #\n"
+banner+= "################################\n"
+banner += "  ############################\n"
+banner += "  #        FILE MODE         #\n"
+banner += "  ############################"
+print(banner)
+if args.o == None or args.k == None or args.i == None:
+    print("Missing args")
+else:
+    if args.d:
+        print("Opening file {0}...".format(args.i))
+        with open(args.i, 'r', encoding='UTF-8') as f:
+            data = f.read()
+
+        print("Decrypting...")
+        decrypted = decrypt(data, args.k)
+
+        print("Writing to {0}...".format(args.o))
+        with open(args.o, 'w', encoding='UTF-8') as f:
+            f.write(decrypted)
+    else:
+        print("Opening file {0}...".format(args.i))
+        with open(args.i, 'r', encoding='UTF-8') as f:
+            data = f.read()
+
+        print("Encrypting...")
+        encrypted = encrypt(data, args.k)
+
+        print("Writing to {0}...".format(args.o))
+        with open(args.o, 'w', encoding='UTF-8') as f:
+            f.write(encrypted)
+
+```
+
+**Check** es solo una pista que nos deja el author de la maquina. Los demás archivos estan encriptados y no son legibles.
+
+Leyendo un poco el código de python, el programa espera 3 argumentos esenciales. 
+
+*-k* que será la key.
+*-i* será el archivo input
+*-o* será el output
+
+De por sí, no conocemos la llave, por lo que sería imposible realizar el desencriptado (*con la opción -d*), sin embargo, tenemos un mensaje sin desencriptar, y un output ya encriptado. Esto es crucial.. ya que el encriptado es un cambio de posiciones respecto a su posición inicial. Por tanto, para desencriptarlo, lo unico que se necesita es volver a poner las piezas en su sitio.
+
+![image](https://user-images.githubusercontent.com/87484792/188674823-01e1cb5e-c4da-4472-847b-1220b382e099.png)
+
+La key parece ser "alexandrovich". Usemosla para ver la contraseña.
+
+![image](https://user-images.githubusercontent.com/87484792/188675111-a3658c49-0c9a-439f-ae98-5be66726106b.png)
+
+Efectivamente, encontramos la contraseña **
